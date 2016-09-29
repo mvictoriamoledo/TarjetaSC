@@ -19,7 +19,7 @@ class TarjetaTest extends TestCase {
 	$tarje= new Tarjetas("estudiante", "Medio boleto");
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"18.52","15/09/2016");
-	$this->assertEquals($tarje->saldo(), 320-1.32, "Cuando cargo 272 deberia tener finalmente 320 y paga 1.32 de pasaje");
+	$this->assertEquals($tarje->saldo(), 320-2.64, "Cuando cargo 272 deberia tener finalmente 320 y paga 2.64 de pasaje");
 
   }
 
