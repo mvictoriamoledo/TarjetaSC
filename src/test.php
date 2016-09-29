@@ -11,7 +11,7 @@ $tarjeta = new Sube;
 $tarjeta->recargar(272);
 echo $tarjeta->saldo() . "\n";
 $colectivo144Negro = new Colectivo("144 Negro", "Rosario Bus");
-$tarjeta->pagar($colectivo144Negro, "2016/06/30","22:50");
+$tarjeta->pagar($colectivo144Negro, "2016/06/30","22,50");
 echo $tarjeta->saldo() . "\n";
 $colectivo135 = new Colectivo("135", "Rosario Bus");
 $tarjeta->pagar($colectivo135, "2016/06/30","23,10");
