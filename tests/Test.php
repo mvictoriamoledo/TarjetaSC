@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase {
 
-  public function testCargaSaldo() {
+  public function testCargaSaldoTresVeinte() {
     $tarjeta = new Tarjetas("estudiante", "Medio boleto");
     $tarjeta->recargar(272);
     $this->assertEquals($tarjeta->saldo(), 320, "Cuando cargo 272 deberia tener finalmente 320");
@@ -87,5 +87,25 @@ class TarjetaTest extends TestCase {
 	$bondi= new Colectivos("144");
 	$tarje->pagar($bondi,"18.52","15/09/2016");
         $this->assertEquals($tarje->saldo(), (320-0), "Cuando cargo 272 deberia tener finalmente 320 y no paga el viaje");
+   }
+   
+   public function testCargarSaldoNormal() {
+   	$tarje= new Tarjetas("pase libre", "ConPase");
+	$tarje->recargar(288);
+	$this->assertEquals($tarje->saldo(), 288, "Cuando cargo 288 deberia tener 288");
+   }
+	
+   public function testCargarSaldoSeisCuarenta() {
+   	$tarje= new Tarjetas("pase libre", "ConPase");
+	$tarje->recargar(500);
+	$this->assertEquals($tarje->saldo(), 640, "Cuando cargo 500 deberia tener 640");
+   }
+	
+   public function testViajeEnBici() {
+   	$tarje= new Tarjetas("estudiante", "Medio");
+	$tarje->recargar(288);
+	$velo= new Biciletas("201");
+	$tarje->pagar($velo,"18.52","15/09/2016");
+	$this->assertEquals($tarje->saldo(), (288-12), "Cargo 288 y pago 12");
    }
 }
