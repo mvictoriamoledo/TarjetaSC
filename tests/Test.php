@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Poli\Tarjeta;
 
 use PHPUnit\Framework\TestCase;
@@ -108,6 +107,7 @@ class TarjetaTest extends TestCase {
 	$tarje->pagar($velo,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (288-12), "Cargo 288 y pago 12");
    }
+	
    public function testDarNombreColectivo() {	
         $bondi= new Colectivos("144");
 	$this->assertEquals($bondi->darnombre(),"144", "El nombre del colectivo es 144");
@@ -128,6 +128,7 @@ class TarjetaTest extends TestCase {
 	$this->assertEquals($tarje->viaje->darmonto(),"12", "Pago un monto de 12");
 	$this->assertEquals($tarje->viaje->darfecha(),"15/09/2016", "Utiliza la bicicleta el dia 15/09/2016");
    }
+	
    public function testDatosUltimoViajeColectivo() {	
    	$tarje= new Tarjetas("estudiante", "Medio");
 	$tarje->recargar(288);
