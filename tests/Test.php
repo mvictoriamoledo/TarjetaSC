@@ -119,6 +119,13 @@ class TarjetaTest extends TestCase {
    }
    
    public function testDatosUltimoViaje() {	
-   
+   	$tarje= new Tarjetas("estudiante", "Medio");
+	$tarje->recargar(288);
+	$velo= new Bicicletas("201");
+	$tarje->pagar($velo,"18.52","15/09/2016");   
+	$this->assertEquals($tarje->viaje->darnombre(),"201", "Utiliza la bicicleta 201");
+	$this->assertEquals($tarje->viaje->darhora(),"18.52", "La uso a las 18.52");
+	$this->assertEquals($tarje->viaje->darmonto(),"12", "Pago un monto de");
+	$this->assertEquals($tarje->viaje->darfecha(),"15/09/2016", "Utiliza la bicicleta el dia 15/09/2016");
    }
 }
