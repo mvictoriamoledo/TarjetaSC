@@ -108,4 +108,15 @@ class TarjetaTest extends TestCase {
 	$tarje->pagar($velo,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (288-12), "Cargo 288 y pago 12");
    }
+   public function testDarNombreColectivo() {	
+   
+   }
+   
+   public function testDarNombreBicicleta() {	
+   
+   }
+   
+   public function testDatosUltimoViaje() {	
+   
+   }
 }
