@@ -109,11 +109,13 @@ class TarjetaTest extends TestCase {
 	$this->assertEquals($tarje->saldo(), (288-12), "Cargo 288 y pago 12");
    }
    public function testDarNombreColectivo() {	
-   
+        $bondi= new Colectivos("144");
+	$this->assertEquals($bondi->darnombre(),"144", "El nombre del colectivo es 144");
    }
    
    public function testDarNombreBicicleta() {	
-   
+   	$velo= new Bicicletas("1029");
+	$this->assertEquals($velo->darnombre(),"1029", "El nombre de la bicicleta es 1029");
    }
    
    public function testDatosUltimoViaje() {	
