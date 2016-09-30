@@ -61,10 +61,23 @@ class TarjetaTest extends TestCase {
   }
 
   public function testNoTransbordoMedio() {
+	$bondi1= new Colectivos("144");
+	$tarje= new Tarjetas("estudiante", "Medio boleto");
+	$tarje->recargar(272);
+	$tarje->pagar($bondi1,"18.52","15/09/2016");
+	$bondi= new Colectivos("145");
+	$tarje->pagar($bondi,"20.30","15/09/2016");
+	$this->assertEquals($tarje->saldo(), (320-4-4), "Cuando cargo 272 deberia tener finalmente 320 y paga 4 el primer viaje y 4 el segundo");
 
   }
 
   public function testNoTransbordoNormal() {
-
+	$tarje= new Tarjetas("movinormal", "Normal");
+	$tarje->recargar(272);
+	$bondi= new Colectivos("144");
+	$tarje->pagar($bondi,"18.52","15/09/2016");
+        $bondi1= new Colectivos("145");
+	$tarje->pagar($bondi1,"20.30","15/09/2016");
+	$this->assertEquals($tarje->saldo(), (320-8-8), "Cuando cargo 272 deberia tener finalmente 320 y paga 8 el primer viaje y 8 el segundo");
   }
 }
