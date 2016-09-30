@@ -23,7 +23,7 @@ class Tarjetas implements Tarjeta{
 				$this->saldo=$this->saldo;
 				$this->monto=0;
 			}
-			if($this->viaje->darfecha()==$fecha and $this->viaje->darnombre()!=$transporte->darnombre() and ($this->viaje->darhora()-$hora)< 3600 and $this->tipo!='pase libre'){
+			if($this->viajes->darfecha()==$fecha and $this->viajes->darnombre()!=$transporte->darnombre() and ($this->viajes->darhora()-$hora)< 3600 and $this->tipo!='pase libre'){
 				#caso del trasbordo
 				if($this->tipo=='estudiante'){
 					#ya sea terciario, secundario o primario
@@ -53,7 +53,7 @@ class Tarjetas implements Tarjeta{
 			$this->tipotransporte="Bicicleta";
 			$this->monto=12;
 		}
-		$this->viaje->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora);
+		$this->viajes->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora);
 	}
 	
 	
@@ -76,7 +76,7 @@ class Tarjetas implements Tarjeta{
 	}
 	
 	public function viajesRealizados(){
-        echo "El ultimo viaje realizado por ".$this->tipo." fue en ".$this->tipotransporte.": ".$this->viaje->darnombre()." el dia ".$this->viaje->darfecha()." a las: ".$this->viaje->darhora()." hs y pago un monto de: ".$this->viaje->darmonto()."\n";
+        echo "El ultimo viaje realizado por ".$this->tipo." fue en ".$this->tipotransporte.": ".$this->viajes->darnombre()." el dia ".$this->viajes->darfecha()." a las: ".$this->viajes->darhora()." hs y pago un monto de: ".$this->viajes->darmonto()."\n";
 	
     }
 }
