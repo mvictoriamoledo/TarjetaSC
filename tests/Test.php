@@ -104,7 +104,7 @@ class TarjetaTest extends TestCase {
    public function testViajeEnBici() {
    	$tarje= new Tarjetas("estudiante", "Medio");
 	$tarje->recargar(288);
-	$velo= new Biciletas("201");
+	$velo= new Bicicletas("201");
 	$tarje->pagar($velo,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (288-12), "Cargo 288 y pago 12");
    }
