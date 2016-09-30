@@ -23,7 +23,7 @@ class Tarjetas implements Tarjeta{
 				$this->saldo=$this->saldo;
 				$this->monto=0;
 			}
-			if($this->viaje->darfecha()==$fecha&&$this->viaje->darnombre()!=$transporte->darnombre()&&($hora-$this->viaje->darhora())<1&&$this->tipo!='pase libre'){
+			if($this->viaje->darfecha()==$fecha and $this->viaje->darnombre()!=$transporte->darnombre() and ($this->viaje->darhora()-$hora)< 3600 and $this->tipo!='pase libre'){
 				#caso del trasbordo
 				if($this->tipo=='estudiante'){
 					#ya sea terciario, secundario o primario
