@@ -6,7 +6,7 @@ class Tarjetas implements Tarjeta{
 	protected $saldo;
 	protected $tipotransporte;
 	protected $nombre;
-	protected $viaje;
+	public $viaje;
 	protected $monto;
 	
 	public function __construct($tipopersona, $name){
