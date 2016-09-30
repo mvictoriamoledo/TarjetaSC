@@ -80,4 +80,12 @@ class TarjetaTest extends TestCase {
 	$tarje->pagar($bondi1,"20.30","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-8-8), "Cuando cargo 272 deberia tener finalmente 320 y paga 8 el primer viaje y 8 el segundo");
   }
+
+   public function testPaselibre() {
+   	$tarje= new Tarjetas("pase libre", "ConPase");
+	$tarje->recargar(272);
+	$bondi= new Colectivos("144");
+	$tarje->pagar($bondi,"18.52","15/09/2016");
+        $this->assertEquals($tarje->saldo(), (320-0), "Cuando cargo 272 deberia tener finalmente 320 y no paga el viaje");
+   }
 }
