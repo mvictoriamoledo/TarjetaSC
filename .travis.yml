@@ -1,6 +1,9 @@
 language: php
 php:
   - '7.0'
+  install:
+- curl -s http://getcomposer.org/installer | php
+- php composer.phar install --dev --no-interaction
 
 before_script:
   - wget http://getcomposer.org/composer.phar
@@ -8,3 +11,8 @@ before_script:
 
 script:
   - phpunit
+  
+after_success:
+- travis_retry php vendor/bin/coveralls
+notifications:
+email: false
