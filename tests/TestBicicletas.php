@@ -4,7 +4,7 @@ namespace Poli\Tarjeta;
 
 use PHPUnit\Framework\TestCase;
 
-class TarjetaTest extends TestCase {
+class BiciTest extends TestCase {
 
  public function testPagarBici() {
 	$bici= new Bicicleta("1234");
