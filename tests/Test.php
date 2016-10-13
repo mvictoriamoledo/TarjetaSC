@@ -28,10 +28,15 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(272);
 	$tarje->pagar($bici,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-12), "Cuando cargo 272 deberia tener finalmente 320 y pagar 12 de pasaje");
+  	
   }
 
-  public function testPagarViajeSinSaldo() {
-
+  public function testPaseLibre() {
+	$bondi= new Colectivos("144");
+	$tarje= new Tarjetas("pase libre", "movi con pase");
+	$tarje->recargar(20);
+	$tarje->pagar($bondi,"18.52","15/09/2016");
+	$this->assertEqual($tarje->saldo(),20-0,"Se recargo 20 ycomo es pase libre se paga 0");
   }
 
   public function testTransbordo() {
