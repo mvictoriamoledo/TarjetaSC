@@ -26,16 +26,21 @@ class Tarjetas implements Tarjeta{
 				$this->saldo=$this->saldo;
 				$this->monto=0;
 			}
-			if($this->viaje->darfecha()==$fecha&&$this->viaje->darnombre()!=$transporte->darnombre()&&($hora-$this->viaje->darhora())<1&&$this->tipo!='pase libre'){
+			if($this->viaje->darfecha()==$fecha&&$this->viaje->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
 				#caso del trasbordo
 				if($this->tipo=='estudiante'){
 					#ya sea terciario, secundario o primario
-					$this->saldo=$this->saldo-1.32;
-					$this->monto=1.32;
+					if($fecha!="sabado"&&$hora-$this->viaje->darhora())<1&&$hora<22&&$hora>6){
+						$this->saldo=$this->saldo-1.32;
+						$this->monto=1.32;
+					}
 				}
 				else{
-					$this->saldo=$this->saldo-2.64;
-					$this->monto=2.64;
+				#TERMINAR DE VER ESTO
+					if($hora-$this->viaje->darhora())<1&&$fecha==){
+						$this->saldo=$this->saldo-2.64;
+						$this->monto=2.64;
+					}
 				}
 			}
 			else{
