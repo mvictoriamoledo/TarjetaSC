@@ -8,12 +8,14 @@ class Tarjetas implements Tarjeta{
 	protected $nombre;
 	protected $viaje;
 	protected $monto;
+	protected $boleto;
 	
 	public function __construct($tipopersona, $name){
 		$this->tipo=$tipopersona;
 		$this->saldo=0;
 		$this->nombre=$name;
 		$this->viaje=new Viajes();
+		$this->boleto=new Boleto();
 	}
 	
 	public function pagar($transporte, $hora, $fecha){
@@ -54,6 +56,7 @@ class Tarjetas implements Tarjeta{
 			$this->monto=12;
 		}
 		$this->viaje->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora);
+		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
 	}
 	
 	
