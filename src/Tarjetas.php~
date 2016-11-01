@@ -9,6 +9,7 @@ class Tarjetas implements Tarjeta{
 	protected $viaje;
 	protected $monto;
 	protected $boleto;
+	protected $cantplususados=0;
 	
 	public function __construct($tipopersona, $name){
 		$this->tipo=$tipopersona;
@@ -48,6 +49,10 @@ class Tarjetas implements Tarjeta{
 						$this->monto=8;
 					}
 				}
+			}
+			if($this->saldo==0||$this->saldo==-8){
+				$this->$saldo=$this->$saldo-8;
+				$this->$monto="Plus";
 			}
 		}
 		else{
