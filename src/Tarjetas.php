@@ -13,7 +13,7 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipopersona;
 		$this->saldo=0;
 		$this->nombre=$name;
-		$this->viaje=new Viajes();
+		$this->viaje=new Boletos();
 	}
 	
 	public function pagar($transporte, $hora, $fecha){
