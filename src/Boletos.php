@@ -9,9 +9,11 @@ class Boletos{
 	protected $saldo;
 	protected $numerolinea;
 	protected $idtarjeta;
+	protected $monto;
 
 	public function pedirdatosultimoviaje($nrolinea,$monto,$fecha,$hora,$saldo,$nombre){
-
+		$this->monto=$monto;
+		
 		$this->numerolinea=$nrolinea;
 
 		$this->fecha=$fecha;
@@ -40,10 +42,10 @@ class Boletos{
 		return $this->nombreultimotransporteusado;
 	}
 	public function darhora(){
-		return $this->horaultimoviajehecho;
+		return $this->hora;
 	}
 	public function darfecha(){
-		return $this->fechaultimoviaje;
+		return $this->fecha;
 	}
 	public function darmonto(){
 		return $this->monto;
