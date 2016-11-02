@@ -3,10 +3,38 @@
 namespace Poli\Tarjeta;
 
 class Boleto{
-	protected $nombreultimotransporteusado;
-	protected $horaultimoviajehecho;
-	protected $fechaultimoviaje;
-	protected $monto;
+	protected $fecha;
+	protected $hora;
+	protected $tipo;
+	protected $saldo;
+	protected $numerolinea;
+	protected $idtarjeta;
+
+	public function pedirdatosultimoviaje($nrolinea,$monto,$fecha,$hora,$saldo,$nombre){
+
+		$this->numerolinea=$nrolinea;
+
+		$this->fecha=$fecha;
+
+		$this->hora=$hora;
+	
+		$this->saldo=$saldo;
+		
+		$this->idtarjeta=$nombre;
+		
+		if($monto==$8){
+			$this->tipo="Normal";	
+		}
+		if($monto==$4){
+			$this->tipo="Medio";	
+		}
+		if($monto==$1,32||$monto==2,64){
+			$this->tipo="Trasbordo";	
+		}
+		if($monto=="Plus"){
+			$this->tipo="Viaje Plus";	
+		}
+	}
 	
 	public function darnombre(){
 		return $this->nombreultimotransporteusado;
@@ -19,12 +47,6 @@ class Boleto{
 	}
 	public function darmonto(){
 		return $this->monto;
-	}
-	public function pedirdatosultimoviaje($nombre,$monto,$fecha,$hora){
-		$this->nombreultimotransporteusado=$nombre;
-		$this->monto=$monto;
-		$this->fechaultimoviaje=$fecha;
-		$this->horaultimoviajehecho=$hora;
 	}
 }
 
