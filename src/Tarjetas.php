@@ -23,16 +23,34 @@ class Tarjetas implements Tarjeta{
 				$this->saldo=$this->saldo;
 				$this->monto=0;
 			}
-			if($this->viaje->darfecha()==$fecha&&$this->viaje->darnombre()!=$transporte->darnombre()&&($hora-$this->viaje->darhora())<1&&$this->tipo!='pase libre'){
+			if($this->viaje->darfecha()==$fecha&&$this->viaje->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
 				#caso del trasbordo
 				if($this->tipo=='estudiante'){
-					#ya sea terciario, secundario o primario
-					$this->saldo=$this->saldo-1.32;
-					$this->monto=1.32;
+					#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
+					if($fecha!="sabado"&&$fecha!="domingo"){
+						if($hora<22&&$hora>6&&$hora-$this->viaje->darhora())<=1){
+							$this->saldo=$this->saldo-1.32;
+							$this->monto=1.32;
+						}
+						if($hora>22&&$hora<6&&$hora-$this->viaje->darhora())<=1.7){
+							$this->saldo=$this->saldo-1.32;
+							$this->monto=1.32;
+						}
+					}
 				}
 				else{
-					$this->saldo=$this->saldo-2.64;
-					$this->monto=2.64;
+					if($hora<22&&$hora>6&&$hora-$this->viaje->darhora())<=1){
+						$this->saldo=$this->saldo-2.64;
+						$this->monto=2.64;
+					}
+					if($hora>22&&$hora<6&&$hora-$this->viaje->darhora())<=1.7){
+						$this->saldo=$this->saldo-2.64;
+						$this->monto=2.64;
+					}
+					if($hora<22&&$hora>14&&$hora-$this->viaje->darhora())<=1.7&&$fecha=="sabado"||$fecha=="feriado"){
+						$this->saldo=$this->saldo-2.64;
+						$this->monto=2.64;
+					}
 				}
 			}
 			else{
@@ -47,6 +65,10 @@ class Tarjetas implements Tarjeta{
 					}
 				}
 			}
+			if($this->saldo==0||$this->saldo==-8){
+				$this->$saldo=$this->$saldo-8;
+				$this->$monto="Plus";
+			}
 		}
 		else{
 			$this->saldo=$this->saldo-12;
@@ -54,6 +76,7 @@ class Tarjetas implements Tarjeta{
 			$this->monto=12;
 		}
 		$this->viaje->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora);
+		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
 	}
 	
 	
