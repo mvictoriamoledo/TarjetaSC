@@ -36,7 +36,7 @@ class TarjetaTest extends TestCase {
 	$tarje= new Tarjetas("pase libre", "movi con pase");
 	$tarje->recargar(20);
 	$tarje->pagar($bondi,"18.52","15/09/2016");
-	$this->assertEqual($tarje->saldo(),20-0,"Se recargo 20 ycomo es pase libre se paga 0");
+	$this->assertEquals($tarje->saldo(),20-0,"Se recargo 20 ycomo es pase libre se paga 0");
   }
 
   public function testTransbordo() {
