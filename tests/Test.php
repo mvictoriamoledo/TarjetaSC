@@ -123,10 +123,10 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(288);
 	$velo= new Bicicletas("201");
 	$tarje->pagar($velo,"18.52","15/09/2016");   
-	$this->assertEquals($tarje->viaje->darnombre(),"201", "Utiliza la bicicleta 201");
-	$this->assertEquals($tarje->viaje->darhora(),"18.52", "La uso a las 18.52");
-	$this->assertEquals($tarje->viaje->darmonto(),"12", "Pago un monto de 12");
-	$this->assertEquals($tarje->viaje->darfecha(),"15/09/2016", "Utiliza la bicicleta el dia 15/09/2016");
+	$this->assertEquals($tarje->boleto->darnombre(),"201", "Utiliza la bicicleta 201");
+	$this->assertEquals($tarje->boleto->darhora(),"18.52", "La uso a las 18.52");
+	$this->assertEquals($tarje->boleto->darmonto(),"12", "Pago un monto de 12");
+	$this->assertEquals($tarje->boleto->darfecha(),"15/09/2016", "Utiliza la bicicleta el dia 15/09/2016");
    }
 	
    public function testDatosUltimoViajeColectivo() {	
@@ -134,9 +134,9 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(288);
 	$bondi= new Colectivos("144");
 	$tarje->pagar($bondi,"18.52","15/09/2016");  
-	$this->assertEquals($tarje->viaje->darnombre(),"144", "Utiliza el colectivo 144");
-	$this->assertEquals($tarje->viaje->darhora(),"18.52", "Lo uso a las 18.52");
-	$this->assertEquals($tarje->viaje->darmonto(),"4", "Pago un monto de 4 pesos");
-	$this->assertEquals($tarje->viaje->darfecha(),"15/09/2016", "Utiliza el colectivo el dia 15/09/2016");
+	$this->assertEquals($tarje->boleto->darnombre(),"144", "Utiliza el colectivo 144");
+	$this->assertEquals($tarje->boleto->darhora(),"18.52", "Lo uso a las 18.52");
+	$this->assertEquals($tarje->boleto->darmonto(),"4", "Pago un monto de 4 pesos");
+	$this->assertEquals($tarje->boleto->darfecha(),"15/09/2016", "Utiliza el colectivo el dia 15/09/2016");
    }
 }
