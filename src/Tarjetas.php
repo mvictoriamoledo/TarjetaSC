@@ -95,7 +95,6 @@ class Tarjetas implements Tarjeta{
 	}
 	
 	public function saldo(){
-		//echo "El saldo de la tarjeta ".$this->nombre." es: ".$this->saldo."\n";
 		return $this->saldo;
 	}
 	
