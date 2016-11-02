@@ -89,7 +89,7 @@ class Tarjetas implements Tarjeta{
         if($monto==500){
 			$this->saldo=$this->saldo+640;
 		}
-		if($monto==272){
+	if($monto==272){
 			$this->saldo=$this->saldo+320;
 		}
 	}
