@@ -37,10 +37,10 @@ class Tarjetas implements Tarjeta{
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
-						}
 					}
+					
 					else{
-						if($hora<22&&$hora>6&&$hora-$this->boleto->darhora())<=1){
+						if($hora<22&&$hora>6&&$hora-$this->boleto->darhora())<=1&&){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
@@ -53,24 +53,23 @@ class Tarjetas implements Tarjeta{
 							$this->monto=2.64;
 						}
 					}
-				}
-			}
-			else{
-				if($this->tipo!='pase libre'&&$fecha!="sabado"&&$fecha!="domingo"){
-					if($this->tipo=='estudiante'){ 
-						$this->saldo=$this->saldo-4;
-						$this->monto=4;
+						
+				else{
+					if($this->tipo!='pase libre'&&$fecha!="sabado"&&$fecha!="domingo"){
+						if($this->tipo=='estudiante'){ 
+							$this->saldo=$this->saldo-4;
+							$this->monto=4;
+						}
+						else{
+							$this->saldo=$this->saldo-8;
+							$this->monto=8;
+						}
 					}
-					else{
-						$this->saldo=$this->saldo-8;
-						$this->monto=8;
-					}
 				}
-			}
-			if($this->saldo==0||$this->saldo==-8){
-				$this->$saldo=$this->$saldo-8;
-				$this->$monto="Plus";
-			}
+				if($this->saldo==0||$this->saldo==-8){
+						$this->$saldo=$this->$saldo-8;
+						$this->$monto="Plus";
+				}
 		}
 		else{
 			$this->saldo=$this->saldo-12;
@@ -95,10 +94,5 @@ class Tarjetas implements Tarjeta{
 	public function saldo(){
 		return $this->saldo;
 	}
-	
-	public function viajesRealizados(){
-        echo "El ultimo viaje realizado por ".$this->tipo." fue en ".$this->tipotransporte.": ".$this->boleto->darnombre()." el dia ".$this->boleto->darfecha()." a las: ".$this->boleto->darhora()." hs y pago un monto de: ".$this->boleto->darmonto()."\n";
-	
-    }
 }
 
