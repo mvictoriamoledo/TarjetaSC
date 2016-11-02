@@ -75,7 +75,6 @@ class Tarjetas implements Tarjeta{
 			$this->tipotransporte="Bicicleta";
 			$this->monto=12;
 		}
-		$this->viaje->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora);
 		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
 	}
 	
