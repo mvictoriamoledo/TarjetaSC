@@ -2,7 +2,7 @@
 
 namespace Poli\Tarjeta;
 
-class Viajes{
+class Boleto{
 	protected $nombreultimotransporteusado;
 	protected $horaultimoviajehecho;
 	protected $fechaultimoviaje;
