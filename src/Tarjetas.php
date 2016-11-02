@@ -80,8 +80,6 @@ class Tarjetas implements Tarjeta{
 		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
 	}
 	
-	
-	
 	public function recargar($monto){
         if($monto!=500&&$monto!=272){
 			$this->saldo=$this->saldo+$monto;
