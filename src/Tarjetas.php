@@ -75,9 +75,6 @@ class Tarjetas implements Tarjeta{
 		return $this->saldo;
 	}
 	
-	public function viajesRealizados(){
-        echo "El ultimo viaje realizado por ".$this->tipo." fue en ".$this->tipotransporte.": ".$this->viaje->darnombre()." el dia ".$this->viaje->darfecha()." a las: ".$this->viaje->darhora()." hs y pago un monto de: ".$this->viaje->darmonto()."\n";
 	
-    }
 }
 
