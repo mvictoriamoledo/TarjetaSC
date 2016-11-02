@@ -25,7 +25,7 @@ class Tarjetas implements Tarjeta{
 			}
 			if($this->boleto->darfecha()==$fecha&&$this->boleto->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
 				#caso del trasbordo
-				if($this->boleto->darfecha()!="Plus"){
+				if($this->boleto->darmonto()!="Plus"){
 					if($this->tipo=='estudiante'){
 						#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
 						if($fecha!="sabado"&&$fecha!="domingo"){
