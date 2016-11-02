@@ -2,7 +2,7 @@
 
 namespace Poli\Tarjeta;
 
-class Boleto{
+class Boletos{
 	protected $fecha;
 	protected $hora;
 	protected $tipo;
