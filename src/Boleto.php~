@@ -2,7 +2,7 @@
 
 namespace Poli\Tarjeta;
 
-class Viaje {
+class Boleto {
 
   private $tipo;
 
