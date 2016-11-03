@@ -9,10 +9,10 @@ class Tarjetas implements Tarjeta{
 	protected $viaje;
 	protected $monto;
 	
-	public function __construct($tipopersona, $name){
-		$this->tipo=$tipopersona;
+	public function __construct($tipotarejeta, $IDtarjeta){
+		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
-		$this->nombre=$name;
+		$this->nombre=$IDtarjeta;#name
 		$this->viaje=new Viajes();
 	}
 	
@@ -25,7 +25,7 @@ class Tarjetas implements Tarjeta{
 			}
 			if($this->viaje->darfecha()==$fecha and ($this->viaje->darhora()-$hora)< 1 and $this->viaje->darnombre() != $transporte->darnombre() and $this->tipo!='pase libre'){
 				#caso del trasbordo
-				if($this->tipo=='estudiante'){
+				if($this->tipo=='medio boleto'){
 					#ya sea terciario, secundario o primario
 					$this->saldo=$this->saldo-1.32;
 					$this->monto=1.32;
@@ -37,7 +37,7 @@ class Tarjetas implements Tarjeta{
 			}
 			else{
 				if($this->tipo!='pase libre'){
-					if($this->tipo=='estudiante'){ 
+					if($this->tipo=='medio boleto'){ 
 						$this->saldo=$this->saldo-4;
 						$this->monto=4;
 					}
