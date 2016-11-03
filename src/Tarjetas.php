@@ -2,14 +2,14 @@
 
 namespace Poli\Tarjeta;
 class Tarjetas implements Tarjeta{ 
-	protected $tipo;
+	protected $tipotarejta;
 	protected $saldo;
 	protected $tipotransporte;
 	protected $nombre;
 	protected $viaje;
 	protected $monto;
 	
-	public function __construct($tipotarejeta, $IDtarjeta){
+	public function __construct($tipotarjeta, $IDtarjeta){
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
