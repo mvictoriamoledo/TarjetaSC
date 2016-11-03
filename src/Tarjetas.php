@@ -32,8 +32,8 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=monto*0.5;
 			}
-			if($this->cont<1)
-			{
+			
+			
 				if($this->viaje->dardia()=='Lunes' or $this->viaje->dardia()=='Martes'or $this->viaje->dardia()=='Martes'or $this->viaje->dardia()=='Miercoles'or $this->viaje->dardia()=='Jueves'or $this->viaje->dardia()=='Viernes' )
 				{ #trasbordo dia desemana
 					if(($this->viaje->darhora)>6 and ($this->viaje->darhora)<22 )
@@ -108,12 +108,7 @@ class Tarjetas implements Tarjeta{
 					
 				}
 
-			}
-			else
-			{
-			$this->saldo=($this->saldo)-($this->monto);
-					
-			}
+			
 		else
 		{	$this->tipotransporte="Bicicleta";
 			$this->monto=12;
