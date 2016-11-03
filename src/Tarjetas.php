@@ -2,7 +2,7 @@
 
 namespace Poli\Tarjeta;
 class Tarjetas implements Tarjeta{ 
-	protected $tipotarejta;
+	protected $tipo;
 	protected $saldo;
 	protected $tipotransporte;
 	protected $nombre;
@@ -13,7 +13,7 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		$this->viaje=new Viajes();
+		$this->viaje= new Viajes();
 	}
 	
 	public function pagar($transporte, $hora, $fecha){
