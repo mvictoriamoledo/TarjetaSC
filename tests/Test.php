@@ -16,7 +16,7 @@ class TarjetaTest extends TestCase {
 
   public function testPagarViaje() {
 	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas("estudiante", "Medio boleto");
+	$tarje= new Tarjetas("Medio boleto", "1234");
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-4), "Cuando cargo 272 deberia tener finalmente 320 y paga 4 de pasaje");
@@ -24,7 +24,7 @@ class TarjetaTest extends TestCase {
   }
   public function testPagarBici() {
 	$bici= new Bicicletas("1234");
-	$tarje= new Tarjetas("normal", "movi estandar");
+	$tarje= new Tarjetas("normal", "1110");
 	$tarje->recargar(272);
 	$tarje->pagar($bici,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-12), "Cuando cargo 272 deberia tener finalmente 320 y pagar 12 de pasaje");
@@ -33,7 +33,7 @@ class TarjetaTest extends TestCase {
 
   public function testPaseLibre() {
 	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas("pase libre", "movi con pase");
+	$tarje= new Tarjetas("pase libre", "3730");
 	$tarje->recargar(20);
 	$tarje->pagar($bondi,"18.52","15/09/2016");
 	$this->assertEquals($tarje->saldo(),20-0,"Se recargo 20 ycomo es pase libre se paga 0");
@@ -41,7 +41,7 @@ class TarjetaTest extends TestCase {
 
   public function testTransbordo() {
 	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas("estudiante", "Medio boleto");
+	$tarje= new Tarjetas("Medio boleto", "1234");
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"21.52","30/09/2016");
 	
@@ -52,11 +52,13 @@ class TarjetaTest extends TestCase {
 	
   public function testBoleto() {
 	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas("estudiante", "Medio boleto");
+	$tarje= new Tarjetas ("Medio boleto", "1234");
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"21.52","30/09/2016");
-	$bole=new Boleto();
-	$this->assertEquals($bole->mostrarinfo(),(TERMINAR
+	
+	$this->assertEquals($this->Boleto->mostrarinfo(),(" \nMedio boleto 1234"" Colectivo 144 \n" "Fecha: 30/09/2016 21.52 " " \nViaje: 4 El saldo restante es: 316"), "OK");
+     
+    
 	  
   }
 
