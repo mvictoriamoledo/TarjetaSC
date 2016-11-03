@@ -26,7 +26,7 @@ class Tarjetas implements Tarjeta{
 			if($this->saldo==0||$this->saldo==-8){
 						$this->$saldo=$this->$saldo-8;
 						$this->$monto="Plus";
-				}
+			}
 			if($this->boleto->darfecha()==$fecha&&$this->boleto->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
 				#caso del trasbordo
 				if($this->boleto->darmonto()!="Plus"){
@@ -42,6 +42,7 @@ class Tarjetas implements Tarjeta{
 								$this->monto=1.32;
 							}
 						}
+					}
 					
 					else{
 						if($hora<22 && $hora>6 && ($hora-$this->boleto->darhora())<=1){
@@ -77,9 +78,10 @@ class Tarjetas implements Tarjeta{
 			$this->tipotransporte="Bicicleta";
 			$this->monto=12;
 			}
+		
 		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
+		
 		}
-	}
 		
 	public function recargar($monto){
 	        if($monto!=500&&$monto!=272){
