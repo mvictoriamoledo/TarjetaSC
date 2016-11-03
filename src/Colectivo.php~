@@ -4,14 +4,14 @@ namespace Poli\Tarjeta;
 
 class Colectivo extends Transporte {
 
+  private $tipo;
   private $nombre;
 
-  private $linea;
 
-  public function __construct($nombre, $linea) {
+  public function __construct($nombre) {
     $this->tipo = "colectivo";
     $this->nombre = $nombre;
-    $this->linea = $linea;
+ 
   }
 
   public function Nombre() {
