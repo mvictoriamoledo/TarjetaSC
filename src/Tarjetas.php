@@ -34,10 +34,10 @@ class Tarjetas implements Tarjeta{
 			}
 			
 			
-			if($this->viaje->dardia()=='Lunes' or $this->viaje->dardia()=='Martes'or $this->viaje->dardia()=='Miercoles'or $this->viaje->dardia()=='Jueves'or $this->viaje->dardia()=='Viernes' )
+			if($dia=='Lunes' or $dia=='Martes'or $dia=='Miercoles'or $dia=='Jueves'or $dia=='Viernes' )
 			{ #trasbordo dia desemana
 						
-					if($this->viaje->darfecha()==$fecha and ($this->viaje->darhora()-$hora)<= 1 and $this->viaje->darnombre() != $transporte->darnombre() and $this->tipo!='pase libre')
+					if(($hora)>=6 and ($hora)<=22 and $this->viaje->darfecha()==$fecha and ($this->viaje->darhora()-$hora)<= 1 and $this->viaje->darnombre() != $transporte->darnombre() and $this->tipo!='pase libre')
 					{
 						
 						$this->monto=($this->monto*33)/100;
