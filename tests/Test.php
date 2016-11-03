@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Interface;
+namespace Poli\Tarjeta;
 
 use PHPUnit\Framework\TestCase;
 
