@@ -20,16 +20,15 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Colectivos){
 			$this->tipotransporte="Colectivo";
 			if($this->tipo=='pase libre'){
-				$this->saldo=$this->saldo;
 				$this->monto=0;
 			}
 			if($this->saldo==0||$this->saldo==-8){
 						$this->$saldo=$this->$saldo-8;
-						$this->$monto="Plus";
+						$this->$monto=-8;
 			}
-			if($this->boleto->darfecha()==$fecha&&$this->boleto->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
+			if($this->boleto->darmonto()>0){
+				if($this->boleto->darfecha()==$fecha&&$this->boleto->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
 				#caso del trasbordo
-				if($this->boleto->darmonto()!="Plus"){
 					if($this->tipo=='estudiante'){
 						#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
 						if($fecha!="sabado"&&$fecha!="domingo"){
