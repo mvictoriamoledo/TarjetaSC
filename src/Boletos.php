@@ -39,7 +39,7 @@ class Boletos{
 	}
 	
 	public function darnombre(){
-		return $this->nombreultimotransporteusado;
+		return $this->numerolinea;
 	}
 	public function darhora(){
 		return $this->hora;
