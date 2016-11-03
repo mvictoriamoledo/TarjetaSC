@@ -18,7 +18,7 @@ class Tarjetas implements Tarjeta{
 		
 	}
 	
-	public function pagar($transporte, $hora, $dia, $fecha)
+	public function pagar($transporte, $dia, $fecha, $hora)
 	{
 		if($transporte instanceof Colectivos)
 		{
