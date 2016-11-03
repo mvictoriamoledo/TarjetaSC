@@ -129,7 +129,7 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(288);
 	$velo= new Bicicletas("201");
 	$tarje->pagar($velo,"18.52","sabado");   
-	$this->assertEquals($tarje->boleto->darnombre(),"201", "Utiliza la bicicleta 201");
+	$this->assertEquals($tarje->boleto->dartransporte(),"201", "Utiliza la bicicleta 201");
 	$this->assertEquals($tarje->boleto->darhora(),"18.52", "La uso a las 18.52");
 	$this->assertEquals($tarje->boleto->darmonto(),"12", "Pago un monto de 12");
 	$this->assertEquals($tarje->boleto->darfecha(),"sabado", "Utiliza la bicicleta el dia sabado");
@@ -140,7 +140,7 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(288);
 	$bondi= new Colectivos("144");
 	$tarje->pagar($bondi,"18.52","martes");  
-	$this->assertEquals($tarje->boleto->darnombre(),"144", "Utiliza el colectivo 144");
+	$this->assertEquals($tarje->boleto->dartransporte(),"144", "Utiliza el colectivo 144");
 	$this->assertEquals($tarje->boleto->darhora(),"18.52", "Lo uso a las 18.52");
 	$this->assertEquals($tarje->boleto->darmonto(),"4", "Pago un monto de 4 pesos");
 	$this->assertEquals($tarje->boleto->darfecha(),"martes", "Utiliza el colectivo el dia martes");
