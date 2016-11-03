@@ -33,7 +33,7 @@ class Boletos{
 		if($monto==1.32||$monto==2.64){
 			$this->tipo="Trasbordo";	
 		}
-		if($monto=="Plus"){
+		if($monto=="-8"){
 			$this->tipo="Viaje Plus";	
 		}
 	}
