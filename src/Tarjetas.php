@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Interface;
+namespace Poli\Tarjeta;
 class Tarjetas implements Tarjeta{ 
 	protected $tipo;
 	protected $saldo;
