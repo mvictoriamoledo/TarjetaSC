@@ -33,7 +33,7 @@ class Tarjetas implements Tarjeta{
 					if($this->tipo=='estudiante'){
 						#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
 						if($fecha!="sabado"&&$fecha!="domingo"){
-							if($hora<22&&$hora>6&&$hora-$this->boleto->darhora())<=1){
+							if($hora<22&&$hora>6&& ($hora-$this->boleto->darhora())<=1){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
