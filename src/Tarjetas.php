@@ -64,8 +64,8 @@ class Tarjetas implements Tarjeta{
 					}
 				}		
 				else{
-					if($this->tipo!='pase libre'&&$fecha!="sabado"&&$fecha!="domingo"){
-						if($this->tipo=='estudiante'){ 
+					if($this->tipo!='pase libre'){
+						if($this->tipo=='estudiante'&&$fecha!="sabado"&&$fecha!="domingo"){ 
 							$this->saldo=$this->saldo-4;
 							$this->monto=4;
 						}
