@@ -30,7 +30,7 @@ class Tarjetas implements Tarjeta{
 			}
 			if($this->tipo=='medio boleto')
 			{
-				$this->monto=monto*0.5;
+				$this->monto=$this->monto*0.5;
 			}
 			
 			
