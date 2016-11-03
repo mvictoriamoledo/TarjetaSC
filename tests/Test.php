@@ -53,7 +53,14 @@ class TarjetaTest extends TestCase {
 
 
   public function testNoTransbordo() {
-
+	$bondi= new Colectivos("144");
+	$tarje= new Tarjetas("normal", "1234");
+	$tarje->recargar(272);
+	$tarje->pagar($bondi,"Lunes","30/09/2016","20.55");
+	
+	$bondi2= new Colectivos("128");
+	$tarje->pagar($bondi2,"Lunes","30/09/2016","23.00");
+	$this->assertEquals($tarje->saldo(), (320-8-8),"Ok");
   }
 
 }
