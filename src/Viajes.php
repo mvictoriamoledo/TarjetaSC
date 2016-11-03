@@ -6,7 +6,7 @@ class Viajes{
 	protected $nombreultimotransporteusado;
 	protected $horaultimoviajehecho;
 	protected $fechaultimoviaje;
-	protected $diadefecha
+	protected $diadefecha;
 	protected $monto;
 	protected $boleto;
 	public function __construct(){
