@@ -1,12 +1,13 @@
 <?php
 namespace Poli\Tarjeta;
-class Boleto implements Tarjetas{ 
+class Boleto { 
+		
 	
   public function mostrarinfo () {
-     echo " ".$this->tarjeta->tipo." ".$this->tarjeta->nombre."\n";
-     echo " ".$this->tipotransporte." ".$this->colectivo->darnombre()."\n";
-     echo "Fecha: ".$this->viaje->darfecha." ".$this->viaje->darhora."\n";
-     echo "Viaje: ".$this->viaje->darmonto." El saldo restante es: ".$this->saldo.;
+     return " ".$this->tarjeta->tipo." ".$this->tarjeta->nombre."\n";
+     return " ".$this->tarjeta->tipotransporte." ".$this->colectivo->darnombre()."\n";
+     return "Fecha: ".$this->viaje->darfecha." ".$this->viaje->darhora."\n";
+     return "Viaje: ".$this->viaje->darmonto." El saldo restante es: ".$this->tarjeta->saldo.;
   }
   
   
