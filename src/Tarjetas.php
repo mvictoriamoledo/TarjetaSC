@@ -60,9 +60,9 @@ class Tarjetas implements Tarjeta{
 
 				}
 			
-				if($this->dardia()=='Sabado') #Trasbordo dia sabado
+				if($this->viaje->dardia()=='Sabado') #Trasbordo dia sabado
 				{
-					if(($this->darhora)>6 and ($this->darhora)<14 )
+					if(($this->viaje->darhora)>6 and ($this->viaje->darhora)<14 )
 					{
 			 			if($this->viaje->darfecha()==$fecha and ($this->viaje->darhora()-$hora)< 1 and $this->viaje->darnombre() != $transporte->darnombre() and $this->tipo!='pase libre')
 						{
@@ -84,10 +84,10 @@ class Tarjetas implements Tarjeta{
 					
 						}
 					}	
-					$this->cont=($this->cont) +1; #contador cantida de trasbordo
+					
 				}
 			
-				if($this->dardia()=='Domingo' or $this->dardia()=='Feriado')
+				if($this->viaje->dardia()=='Domingo' or $this->viaje->dardia()=='Feriado')
 				{
 					if(($this->viaje->darhora)>6 and ($this->viaje->darhora)<22 )
 					{
