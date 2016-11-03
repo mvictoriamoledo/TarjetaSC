@@ -18,7 +18,7 @@ class TarjetaTest extends TestCase {
 	$tarje= new Tarjetas("estudiante", "Medio boleto");
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"18.52","lunes");
-	$this->assertEquals($tarje->saldo(), 320, "Cuando cargo 272 deberia tener finalmente 320 y paga 4 de pasaje");
+	$this->assertEquals($tarje->saldo(), (320-4), "Cuando cargo 272 deberia tener finalmente 320 y paga 4 de pasaje");
 
   }
 
@@ -36,7 +36,7 @@ class TarjetaTest extends TestCase {
 	$tarje= new Tarjetas("movinormal", "Normal");
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"18.52","martes");
-	$this->assertEquals($tarje->saldo(), 320, "Cuando cargo 272 deberia tener finalmente 320 y paga 8 de pasaje");
+	$this->assertEquals($tarje->saldo(), (320-8), "Cuando cargo 272 deberia tener finalmente 320 y paga 8 de pasaje");
   }
 
   public function testTransbordoConMedio() {
