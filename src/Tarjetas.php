@@ -26,7 +26,7 @@ class Tarjetas implements Tarjeta{
 						$this->$saldo=$this->$saldo-8;
 						$this->$monto=-8;
 			}
-			if($this->boleto->darmonto()>0){
+			if($this->saldo>0){
 				if($this->boleto->darfecha()==$fecha&&$this->boleto->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
 				#caso del trasbordo
 					if($this->tipo=='estudiante'){
@@ -62,7 +62,6 @@ class Tarjetas implements Tarjeta{
 						}
 					}
 				}		
-				else{
 					if($this->tipo!='pase libre'){
 						if($this->tipo=='estudiante'&&$fecha!="sabado"&&$fecha!="domingo"){ 
 							$this->saldo=$this->saldo-4;
@@ -72,7 +71,6 @@ class Tarjetas implements Tarjeta{
 							$this->saldo=$this->saldo-8;
 							$this->monto=8;
 						}
-					}
 				}	
 			}
 		}
