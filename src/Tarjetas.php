@@ -56,7 +56,7 @@ class Tarjetas implements Tarjeta{
 					
 						}
 				 	}
-					$this->cont=($this->cont) +1; #contador cantida de trasbordo
+					
 
 				}
 			
@@ -99,7 +99,7 @@ class Tarjetas implements Tarjeta{
 					
 						}
 					}
-					$this->cont=($this->cont) +1; #contador cantida de trasbordo
+					
 				}				
 
 				else
@@ -107,7 +107,7 @@ class Tarjetas implements Tarjeta{
 					$this->saldo=($this->saldo)-($this->monto);
 					
 				}
-
+		}
 		if($transporte instanceof Bicicletas)	
 		{
 			$this->tipotransporte="Bicicleta";
