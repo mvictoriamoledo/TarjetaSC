@@ -56,7 +56,7 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"21.52","30/09/2016");
 	
-	$this->assertEquals($this->Boleto->mostrarinfo(),(" \nMedio boleto 1234"" Colectivo 144 \n" "Fecha: 30/09/2016 21.52 " " \nViaje: 4 El saldo restante es: 316"), "OK");
+	$this->assertEquals($this->Boleto->mostrarinfo(),"Medio boleto 1234 Colectivo 144 Fecha: 30/09/2016 21.52 Viaje: 4 El saldo restante es: 316", "OK");
      
     
 	  
