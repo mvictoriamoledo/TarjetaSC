@@ -24,13 +24,13 @@ class Boletos{
 		
 		$this->idtarjeta=$nombre;
 		
-		if($monto==$8){
+		if($monto==8){
 			$this->tipo="Normal";	
 		}
-		if($monto==$4){
+		if($monto==4){
 			$this->tipo="Medio";	
 		}
-		if($monto==$1,32||$monto==2,64){
+		if($monto==1,32||$monto==2,64){
 			$this->tipo="Trasbordo";	
 		}
 		if($monto=="Plus"){
