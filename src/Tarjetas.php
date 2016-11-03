@@ -33,26 +33,26 @@ class Tarjetas implements Tarjeta{
 					if($this->tipo=='estudiante'){
 						#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
 						if($fecha!="sabado"&&$fecha!="domingo"){
-							if($hora<22&&$hora>6&& ($hora-$this->boleto->darhora())<=1){
+							if($hora<22 && $hora> 6&& ($hora-$this->boleto->darhora())<=1){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
-							if($hora>22&&$hora<6&&$hora-$this->boleto->darhora())<=1.7){
+							if($hora>22 &&$hora<6 && ($hora-$this->boleto->darhora())<=1.7){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
 					}
 					
 					else{
-						if($hora<22&&$hora>6&&$hora-$this->boleto->darhora())<=1){
+						if($hora<22 && $hora>6 && ($hora-$this->boleto->darhora())<=1){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
-						if($hora>22&&$hora<6&&$hora-$this->boleto->darhora())<=1.7){
+						if($hora>22 && $hora<6 && ($hora-$this->boleto->darhora())<=1.7){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
-						if($hora<22&&$hora>14&&$hora-$this->boleto->darhora())<=1.7&&$fecha=="sabado"||$fecha=="feriado"){
+						if($hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.7&&$fecha=="sabado"||$fecha=="feriado"){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
