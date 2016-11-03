@@ -23,7 +23,7 @@ class Tarjetas implements Tarjeta{
 				$this->monto=0;
 			}
 			if($this->saldo==0||$this->saldo==-8){
-						$this->saldo=$this->$saldo-8;
+						$this->saldo=$this->saldo-8;
 						$this->monto=-8;
 			}
 			if($this->saldo>0){
