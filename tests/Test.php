@@ -8,17 +8,17 @@ use PHPUnit\Framework\TestCase;
 class TarjetaTest extends TestCase {
 
   public function testCargaSaldo() {
-    $tarjeta = new Tarjetas("estudiante", "Medio boleto");
+    $tarjeta = new Tarjetas("medio boleto", "1234");
     $tarjeta->recargar(272);
-    $this->assertEquals($tarjeta->saldo(), 320, "Cuando cargo 272 deberia tener finalmente 320");
+    $this->assertEquals($tarjeta->saldo(),(320), "Cuando cargo 272 deberia tener finalmente 320");
   }
 
 
   public function testPagarViaje() {
 	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas("Medio boleto", "1234");
+	$tarje= new Tarjetas("medio boleto", "1234");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"18.52","15/09/2016");
+	$tarje->pagar($bondi,"Lunes","15/09/2016","18.52");
 	$this->assertEquals($tarje->saldo(), (320-4), "Cuando cargo 272 deberia tener finalmente 320 y paga 4 de pasaje");
 
   }
@@ -26,7 +26,7 @@ class TarjetaTest extends TestCase {
 	$bici= new Bicicletas("1234");
 	$tarje= new Tarjetas("normal", "1110");
 	$tarje->recargar(272);
-	$tarje->pagar($bici,"18.52","15/09/2016");
+	$tarje->pagar($bici,"Martes","15/09/2016","18.52");
 	$this->assertEquals($tarje->saldo(), (320-12), "Cuando cargo 272 deberia tener finalmente 320 y pagar 12 de pasaje");
   	
   }
@@ -35,32 +35,22 @@ class TarjetaTest extends TestCase {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("pase libre", "3730");
 	$tarje->recargar(20);
-	$tarje->pagar($bondi,"18.52","15/09/2016");
+	$tarje->pagar($bondi,"Lunes","15/09/2016","18.52");
 	$this->assertEquals($tarje->saldo(),20-0,"Se recargo 20 ycomo es pase libre se paga 0");
   }
 
   public function testTransbordo() {
 	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas("Medio boleto", "1234");
+	$tarje= new Tarjetas("medio boleto", "1234");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"21.52","30/09/2016");
+	$tarje->pagar($bondi,"Lunes","30/09/2016","20.55");
 	
 	$bondi2= new Colectivos("128");
-	$tarje->pagar($bondi2,"22.05","30/09/2016");
+	$tarje->pagar($bondi2,"Lunes","30/09/2016","21.30");
 	$this->assertEquals($tarje->saldo(), (320-1.32-4), "cargo 272, pero se cargan 320. El primer viaje me sale 4 y el segundo 1,32");
   }
 	
-  public function testBoleto() {
-	$bondi= new Colectivos("144");
-	$tarje= new Tarjetas ("Medio boleto", "1234");
-	$tarje->recargar(272);
-	$tarje->pagar($bondi,"21.52","30/09/2016");
-	
-	$this->assertEquals($this->Boleto->mostrarinfo(),"Medio boleto 1234 Colectivo 144 Fecha: 30/09/2016 21.52 Viaje: 4 El saldo restante es: 316", "OK");
-     
-    
-	  
-  }
+
 
   public function testNoTransbordo() {
 
