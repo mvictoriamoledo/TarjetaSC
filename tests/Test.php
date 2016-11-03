@@ -13,10 +13,10 @@ class TarjetaTest extends TestCase {
   }
  
    public function testPlus() {
-    $tarjeta = new Tarjetas("estudiante", "Medio boleto");
-    $bondi= new Colectivos("144");
+    $tarjeta=new Tarjetas("estudiante", "Medio boleto");
+    $bondi=new Colectivos("144");
     $tarjeta->pagar($bondi,"18.52","lunes");   
-    $this->assertEquals($tarjeta->saldo(), -8, "Cuando no tiene saldo es un viaje plus");
+    $this->assertEquals($tarjeta->saldo(), (-8), "Cuando no tiene saldo es un viaje plus");
   }
 
   public function testPagarViajeConMedio() {
