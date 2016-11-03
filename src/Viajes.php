@@ -7,7 +7,10 @@ class Viajes{
 	protected $horaultimoviajehecho;
 	protected $fechaultimoviaje;
 	protected $monto;
-	
+	protected $boleto;
+	public function __construct(){
+	$this->boleto= new Boleto;
+	}
 	public function darnombre(){
 		return $this->nombreultimotransporteusado;
 	}
