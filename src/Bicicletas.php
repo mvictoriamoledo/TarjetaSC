@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Interface;
+namespace Poli\Tarjeta;
 
 class Bicicletas{
 	protected $costo;
