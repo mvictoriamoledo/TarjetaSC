@@ -30,7 +30,7 @@ class Boletos{
 		if($monto==4){
 			$this->tipo="Medio";	
 		}
-		if($monto==1,32||$monto==2,64){
+		if($monto==1.32||$monto==2.64){
 			$this->tipo="Trasbordo";	
 		}
 		if($monto=="Plus"){
