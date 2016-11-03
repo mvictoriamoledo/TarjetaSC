@@ -57,7 +57,7 @@ class Tarjetas implements Tarjeta{
 							$this->monto=2.64;
 						}
 					}
-						
+				}		
 				else{
 					if($this->tipo!='pase libre'&&$fecha!="sabado"&&$fecha!="domingo"){
 						if($this->tipo=='estudiante'){ 
