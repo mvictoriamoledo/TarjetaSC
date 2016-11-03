@@ -108,9 +108,9 @@ class Tarjetas implements Tarjeta{
 					
 				}
 
-			
-		else
-		{	$this->tipotransporte="Bicicleta";
+		if($transporte instanceof Bicicletas)	
+		{
+			$this->tipotransporte="Bicicleta";
 			$this->monto=12;
 			$this->saldo=$this->saldo-$this->monto;	
 		}
