@@ -33,10 +33,12 @@ class Tarjetas implements Tarjeta{
 					if($this->tipo=='estudiante'){
 						#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
 						if($fecha!="sabado"&&$fecha!="domingo"){
+							
 							if($hora<22 && $hora> 6&& ($hora-$this->boleto->darhora())<=1){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
+							
 							if($hora>22 &&$hora<6 && ($hora-$this->boleto->darhora())<=1.7){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
@@ -49,10 +51,12 @@ class Tarjetas implements Tarjeta{
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
+						
 						if($hora>22 && $hora<6 && ($hora-$this->boleto->darhora())<=1.7){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
+						
 						if($hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.7&&$fecha=="sabado"||$fecha=="feriado"){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
@@ -70,8 +74,9 @@ class Tarjetas implements Tarjeta{
 							$this->monto=8;
 						}
 					}
-				}
+				}	
 			}
+		}
 		
 		else{
 			$this->saldo=$this->saldo-12;
@@ -81,7 +86,7 @@ class Tarjetas implements Tarjeta{
 		
 		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
 		
-		}
+	}
 		
 	public function recargar($monto){
 	        if($monto!=500&&$monto!=272){
