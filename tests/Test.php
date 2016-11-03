@@ -17,12 +17,12 @@ class TarjetaTest extends TestCase {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("estudiante", "Medio boleto");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"18.52","sabado");
+	$tarje->pagar($bondi,"18.52","lunes");
 	$this->assertEquals($tarje->saldo(), (320-4), "Cuando cargo 272 deberia tener finalmente 320 y paga 4 de pasaje");
 
   }
 
-  public function testPagarViajeSinSaldo() {
+  public function testPagarViajePaselibre() {
 	$colec= new Colectivos("144");
 	$tarje= new Tarjetas("pase libre", "Pase");
 	$tarje->recargar(272);
@@ -133,10 +133,10 @@ class TarjetaTest extends TestCase {
    	$tarje= new Tarjetas("estudiante", "Medio");
 	$tarje->recargar(288);
 	$bondi= new Colectivos("144");
-	$tarje->pagar($bondi,"18.52","sabado");  
+	$tarje->pagar($bondi,"18.52","martes");  
 	$this->assertEquals($tarje->boleto->darnombre(),"144", "Utiliza el colectivo 144");
 	$this->assertEquals($tarje->boleto->darhora(),"18.52", "Lo uso a las 18.52");
 	$this->assertEquals($tarje->boleto->darmonto(),"4", "Pago un monto de 4 pesos");
-	$this->assertEquals($tarje->boleto->darfecha(),"sabado", "Utiliza el colectivo el dia sabado");
+	$this->assertEquals($tarje->boleto->darfecha(),"martes", "Utiliza el colectivo el dia martes");
    }
 }
