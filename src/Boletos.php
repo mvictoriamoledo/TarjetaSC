@@ -7,14 +7,14 @@ class Boletos{
 	protected $hora;
 	protected $tipo;
 	protected $saldo;
-	protected $numerolinea;
+	protected $nrotransporte;
 	protected $idtarjeta;
 	protected $monto;
 
 	public function pedirdatosultimoviaje($nrolinea,$monto,$fecha,$hora,$saldo,$nombre){
 		$this->monto=$monto;
 		
-		$this->numerolinea=$nrolinea;
+		$this->nrotransporte=$nrolinea;
 
 		$this->fecha=$fecha;
 
@@ -33,13 +33,17 @@ class Boletos{
 		if($monto==1.32||$monto==2.64){
 			$this->tipo="Trasbordo";	
 		}
-		if($monto=="-8"){
+		if($monto==-8){
 			$this->tipo="Viaje Plus";	
 		}
+		if($monto==0){
+			$this->tipo="Pase Libre";	
+		}
+
 	}
 	
 	public function darnombre(){
-		return $this->numerolinea;
+		return $this->idtarjeta;
 	}
 	public function darhora(){
 		return $this->hora;
@@ -49,6 +53,15 @@ class Boletos{
 	}
 	public function darmonto(){
 		return $this->monto;
+	}
+	public function darsaldo(){
+		return $this->saldo;
+	}
+	public function dartransporte(){
+		return $this->nrotransporte;
+	}
+	public function dartipoviaje(){
+		return $this->tipo;
 	}
 }
 
