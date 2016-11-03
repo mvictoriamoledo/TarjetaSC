@@ -1,6 +1,6 @@
 <?php
 
-namespace Poli\Interface;
+namespace Poli\Tarjeta;
 
 class Boletos{
 	protected $fecha;
