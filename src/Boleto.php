@@ -8,6 +8,7 @@ class Boleto {
      return $this->tarjeta->nombre;
      return $this->tarjeta->tipotransporte;
      return $this->colectivo->darnombre;
+     return $this->viaje->dardia;
      return $this->viaje->darfecha;
      return $this->viaje->darhora;
      return $this->viaje->darmonto;
