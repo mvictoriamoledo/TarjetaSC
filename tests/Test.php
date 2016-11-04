@@ -66,6 +66,13 @@ class TarjetaTest extends TestCase {
         $bondi1= new Colectivos("145");
 	$tarje->pagar($bondi1,"19.12","jueves","15/09/2016");
 	$this->assertEquals($tarje->saldo(), 309.36, "Cuando cargo 272 deberia tener finalmente 320 y paga 8 el primer viaje y 2.64 de trasbordo");
+ 	$tarje->pagar($bondi,"22.15","jueves","15/09/2016");
+  	$tarje->pagar($bondi1,"23.03","jueves","15/09/2016");
+  	$this->assertEquals($tarje->saldo(), (309.36-4-2.64), "Cuando cargo 272 deberia tener finalmente 320 y paga 8 el primer viaje y 2.64 de trasbordo");
+ 	$tarje->pagar($bondi,"22.15","feriado","15/09/2016");
+  	$tarje->pagar($bondi1,"23.03","feriado","15/09/2016");
+  	$this->assertEquals($tarje->saldo(), (309.36-4-2.64-2.64-4), "Cuando cargo 272 deberia tener finalmente 320 y paga 8 el primer viaje y 2.64 de trasbordo");
+ 
   }
 
   public function testNoTransbordoMedio() {
