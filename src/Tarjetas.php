@@ -60,13 +60,13 @@ class Tarjetas implements Tarjeta{
 							$this->monto=2.64;
 						}
 						
-						else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.7 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+						else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
 							#trasbordo
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
 						
-						else if(($hora>14||$hora<22) && ($hora-$this->boleto->darhora())<=1.7&& $fecha=="sabado"||$fecha=="feriado"){
+						else if(($hora<22||$hora>14) && ($hora-$this->boleto->darhora())<=1.3&& $fecha=="sabado"||$fecha=="feriado"){
 							#trasbordo
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
