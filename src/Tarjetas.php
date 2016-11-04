@@ -28,21 +28,24 @@ class Tarjetas implements Tarjeta{
 			}
 			if($this->saldo>0){
 				if($this->boleto->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre'){
-				#caso del trasbordo
+				#casos posibles del trasbordo
 					if($this->tipo=='estudiante'){
 						#ya sea terciario, secundario o primario, se puede usar sólo entre semana
 						if($fecha!="sabado" && $fecha!="domingo"){
 							
 							if($hora<22 && $hora> 6 && ($hora-$this->boleto->darhora())<=1 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+								#trasbordo
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
 							
 							else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+								#trasbordo
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							} 
 							else {
+								#normal
 								$this->saldo=$this->saldo-4;
 								$this->monto=4;
 							}
@@ -50,22 +53,26 @@ class Tarjetas implements Tarjeta{
 					}
 					
 					else{
-						#Trasbordo normal
+						#Posible Trasbordo normal
 						if($hora<22 && $hora>6 && ($hora-$this->boleto->darhora())<=1 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+							#trasbordo
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
 						
 						else if($hora>22 && $hora<6 && ($hora-$this->boleto->darhora())<=1.7 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+							#trasbordo
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
 						
 						else if($hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.7&& $fecha=="sabado"||$fecha=="feriado"){
+							#trasbordo
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
 						else{
+							#normal
 							$this->saldo=$this->saldo-8;
 							$this->monto=8;
 						}
