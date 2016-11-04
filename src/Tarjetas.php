@@ -14,12 +14,12 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		$this->viaje= new Viajes();
+		
 		
 	}
 	
 	public function pagar($transporte, $dia, $fecha, $hora)
-	{
+	{       $this->viaje= new Viajes();
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
