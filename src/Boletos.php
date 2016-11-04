@@ -10,8 +10,9 @@ class Boletos{
 	protected $nrotransporte;
 	protected $idtarjeta;
 	protected $monto;
+	protected $dia;
 
-	public function pedirdatosultimoviaje($nrolinea,$monto,$fecha,$hora,$saldo,$nombre){
+	public function pedirdatosultimoviaje($nrolinea,$monto,$fecha,$hora,$saldo,$nombre,$dia){
 		$this->monto=$monto;
 		
 		$this->nrotransporte=$nrolinea;
@@ -23,6 +24,8 @@ class Boletos{
 		$this->saldo=$saldo;
 		
 		$this->idtarjeta=$nombre;
+		
+		$this->dia=$dia;
 		
 		if($monto==8){
 			$this->tipo="Normal";	
@@ -62,6 +65,9 @@ class Boletos{
 	}
 	public function dartipoviaje(){
 		return $this->tipo;
+	}
+	public function dardia(){
+		return $this->dia;
 	}
 }
 
