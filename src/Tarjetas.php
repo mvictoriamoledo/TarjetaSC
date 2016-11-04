@@ -99,8 +99,9 @@ class Tarjetas implements Tarjeta{
 						}
 					}
 					
-				}				
-
+				}
+			}
+		
 			else
 			{
 					$this->saldo=($this->saldo)-($this->monto);
