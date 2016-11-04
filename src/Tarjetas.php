@@ -34,7 +34,7 @@ class Tarjetas implements Tarjeta{
 			}
 			
 			
-			if($dia=='Lunes' || $dia=='Martes' || $dia=='Miercoles' || $dia=='Jueves' || $dia=='Viernes' )
+			if($dia=="Lunes" || $dia=="Martes" || $dia=="Miercoles" || $dia=="Jueves" || $dia=="Viernes")
 			{ #trasbordo dia desemana
 						
 					if($hora>=6 && $hora<=22 && $this->viaje->darfecha()==$fecha && ($this->viaje->darhora()-$hora)<= 1 && $this->viaje->darnombre() != $transporte->darnombre() && $this->tipo!='pase libre')
@@ -59,7 +59,7 @@ class Tarjetas implements Tarjeta{
 
 			}
 			
-			if($this->viaje->dardia()=='Sabado') #Trasbordo dia sabado
+			if($this->viaje->dardia()=="Sabado") #Trasbordo dia sabado
 			{
 					if(($this->viaje->darhora())>=6 && ($this->viaje->darhora())<=14 )
 					{
@@ -86,7 +86,7 @@ class Tarjetas implements Tarjeta{
 					
 			}
 			
-			if($this->viaje->dardia()=='Domingo' || $this->viaje->dardia()=='Feriado')
+			if($this->viaje->dardia()=="Domingo" || $this->viaje->dardia()=="Feriado")
 			{
 					if(($this->viaje->darhora())>=6 && ($this->viaje->darhora())<=22 )
 					{
@@ -110,6 +110,7 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Bicicletas)	
 		{
 			$this->tipotransporte="Bicicleta";
+			$this->viaje= new Viajes();
 			$this->monto=12;
 			$this->saldo=$this->saldo-$this->monto;	
 		}
