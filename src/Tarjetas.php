@@ -34,7 +34,7 @@ class Tarjetas implements Tarjeta{
 			}
 			
 			if($this->viaje->darnombre() != $transporte->darnombre() && $this->tipo!='pase libre')
-			{	if($dia=="Lunes" || $dia=="Martes" || $dia=="Miercoles" || $dia=="Jueves" || $dia=="Viernes")
+			{	if($dia!="Sabado" && $dia !="Domingo" && $dia!="Feriado")
 				{ #trasbordo dia desemana
 						
 					if($hora>=6 && $hora<=22 && $this->viaje->darfecha()==$fecha && ($this->viaje->darhora()-$hora)<= 1)
