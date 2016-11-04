@@ -69,8 +69,8 @@ class TarjetaTest extends TestCase {
  	$tarje->pagar($bondi,"22.15","jueves","15/09/2016");
   	$tarje->pagar($bondi1,"23.03","jueves","15/09/2016");
   	$this->assertEquals($tarje->saldo(), 298.72, "paga 8 el primer viaje y 2.64 de trasbordo");
- 	$tarje->pagar($bondi,"22.15","feriado","15/09/2016");
-  	$tarje->pagar($bondi1,"23.03","feriado","15/09/2016");
+ 	$tarje->pagar($bondi,"15.32","feriado","15/09/2016");
+  	$tarje->pagar($bondi1,"16.40","feriado","15/09/2016");
   	$this->assertEquals($tarje->saldo(), 288.08, "paga 8 el primer viaje y 2.64 de trasbordo, feriado");
  
   }
