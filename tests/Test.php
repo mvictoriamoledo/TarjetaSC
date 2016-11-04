@@ -25,7 +25,7 @@ class TarjetaTest extends TestCase {
 	$tarje->recargar(272);
 	$tarje->pagar($bondi,"18.52","lunes","15/09/2016");
 	$this->assertEquals($tarje->saldo(), 316, "Cuando cargo 272 deberia tener finalmente 320 y paga 4 de pasaje");
-	$this->assertEquals($tarje->monto(), 4,"Paga 4 de pasaje");
+	$this->assertEquals($tarje->boleto->darmonto(), 4,"Paga 4 de pasaje");
   }
 
   public function testPagarViajePaselibre() {
