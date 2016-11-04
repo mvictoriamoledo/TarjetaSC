@@ -16,7 +16,7 @@ class Tarjetas implements Tarjeta{
 		$this->boleto=new Boletos();
 	}
 	
-	public function pagar($transporte, $hora, $dia, $fecha){
+	public function pagar($transporte, $hora, $fecha, $dia){
 		if($transporte instanceof Colectivos){
 			$this->tipotransporte="Colectivo";
 			if($this->tipo=='pase libre'){
