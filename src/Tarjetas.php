@@ -16,7 +16,7 @@ class Tarjetas implements Tarjeta{
 		$this->boleto=new Boletos();
 	}
 	
-	public function pagar($transporte, $hora, $fecha){
+	public function pagar($transporte, $hora, $dia, $fecha){
 		if($transporte instanceof Colectivos){
 			$this->tipotransporte="Colectivo";
 			if($this->tipo=='pase libre'){
@@ -27,18 +27,18 @@ class Tarjetas implements Tarjeta{
 						$this->monto=-8;
 			}
 			if($this->saldo>0){
-				if($this->boleto->darnombre()!=$transporte->darnombre()&&$this->tipo!='pase libre'){
+				if($this->boleto->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre'){
 				#caso del trasbordo
 					if($this->tipo=='estudiante'){
-						#ya sea terciario, secundario o primario, se puede usar sòlo entre semana
-						if($fecha!="sabado"&&$fecha!="domingo"){
+						#ya sea terciario, secundario o primario, se puede usar sólo entre semana
+						if($fecha!="sabado" && $fecha!="domingo"){
 							
-							if($hora<22 && $hora> 6&& ($hora-$this->boleto->darhora())<=1){
+							if($hora<22 && $hora> 6 && ($hora-$this->boleto->darhora())<=1 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							}
 							
-							else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.3){
+							else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
 								$this->saldo=$this->saldo-1.32;
 								$this->monto=1.32;
 							} 
@@ -46,23 +46,22 @@ class Tarjetas implements Tarjeta{
 								$this->saldo=$this->saldo-4;
 								$this->monto=4;
 							}
-		
-						
 						}
 					}
 					
 					else{
-						if($hora<22 && $hora>6 && ($hora-$this->boleto->darhora())<=1){
+						#Trasbordo normal
+						if($hora<22 && $hora>6 && ($hora-$this->boleto->darhora())<=1 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
 						
-						else if($hora>22 && $hora<6 && ($hora-$this->boleto->darhora())<=1.7){
+						else if($hora>22 && $hora<6 && ($hora-$this->boleto->darhora())<=1.7 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
 						
-						else if($hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.7&&$fecha=="sabado"||$fecha=="feriado"){
+						else if($hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.7&& $fecha=="sabado"||$fecha=="feriado"){
 							$this->saldo=$this->saldo-2.64;
 							$this->monto=2.64;
 						}
@@ -74,7 +73,7 @@ class Tarjetas implements Tarjeta{
 				}		
 				else{
 					if($this->tipo!='pase libre'){
-						if($this->tipo=='estudiante'&&$fecha!="sabado"&&$fecha!="domingo"){ 
+						if($this->tipo=='estudiante '&& $fecha!="sabado" && $fecha!="domingo"){ 
 							$this->saldo=$this->saldo-4;
 							$this->monto=4;
 						}
@@ -93,12 +92,12 @@ class Tarjetas implements Tarjeta{
 			$this->monto=12;
 			}
 		
-		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre);
+		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre,$dia);
 		
 	}
 		
 	public function recargar($monto){
-	        if($monto!=500&&$monto!=272){
+	        if($monto!=500 && $monto!=272){
 			$this->saldo=$this->saldo+$monto;
 		}
         
