@@ -56,7 +56,7 @@ class Tarjetas implements Tarjeta{
 					if($hora>=6 && $hora<=14 &&($this->viaje->darhora()-$hora)<= 1)
 					{
 						
-							$this->pasaje=($this->pasaje*33)/100;
+							$this->pasaje=1.32;
 							$this->saldo=$this->saldo-$this->pasaje;
 					}
 				
