@@ -51,7 +51,7 @@ class Tarjetas implements Tarjeta{
 				 	
 				}
 				$this->monto=6;
-				if($this->viaje->dardia()=="Sabado") #Trasbordo dia sabado
+				elseif($this->viaje->dardia()=="Sabado") #Trasbordo dia sabado
 				{	$this->monto=3;
 					if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
 					{
@@ -67,7 +67,7 @@ class Tarjetas implements Tarjeta{
 						}	
 				}
 			
-				if($this->viaje->dardia()=="Domingo" || $this->viaje->dardia()=="Feriado")
+				elseif($this->viaje->dardia()=="Domingo" || $this->viaje->dardia()=="Feriado")
 				{
 					if(($hora())>=6 && ($hora())<=22 && ($hora-$this->viaje->darhora())<= 1.30)
 					{
