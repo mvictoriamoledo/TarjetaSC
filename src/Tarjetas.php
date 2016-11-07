@@ -14,7 +14,7 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		$this->monto=8;
+		
 		
 	}
 	
@@ -23,7 +23,7 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
-			
+			$this->monto=8;
 			if($this->tipo=='pase libre')
 			{
 				$this->monto=0;
