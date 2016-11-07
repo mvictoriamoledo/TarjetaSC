@@ -8,7 +8,8 @@ class Tarjetas implements Tarjeta{
 	protected $nombre;
 	protected $viaje;
 	protected $monto;
-	protected $cont=0;
+	protected $pasaje;
+	
 	
 	public function __construct($tipotarjeta, $IDtarjeta){
 		$this->tipo=$tipotarjeta;#tipopersona
@@ -23,18 +24,18 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
-			
+			$this->pasaje=0;
 			if($this->tipo=='pase libre')
 			{
-				$this->monto=0;
+				$this->pasaje=0;
 			}
 			if($this->tipo=='medio boleto')
 			{
-				$this->monto=$this->monto*0.5;
+				$this->pasaje=$this->pasaje*0.5;
 			}
 			elseif($this->tipo=='normal')
 			{
-				$this->monto=8;
+				$this->pasaje=8;
 			}
 			
 			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha )
@@ -43,16 +44,16 @@ class Tarjetas implements Tarjeta{
 						
 					if($hora>=6 && $hora<=22  && ($this->viaje->darhora()-$hora)<= 1)
 					{
-						$this->monto=($this->monto*33)/100;
-						$this->saldo=$this->saldo-$this->monto;
+						$this->pasaje=($this->pasaje*33)/100;
+						$this->saldo=$this->saldo-$this->pasaje;
 					}
 					
 				 	else  #trasbordo dia de semana de noche
 				 	{
 						if(($this->viaje->darhora()-$hora)<= 1.30)
 						{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+							$this->pasaje=($this->pasaje*33)/100;
+							$this->saldo=$this->saldo-$this->pasaje;
 						}
 				 	}
 				}
@@ -62,16 +63,16 @@ class Tarjetas implements Tarjeta{
 					if($hora>=6 && $hora<=14 &&($this->viaje->darhora()-$hora)<= 1)
 					{
 						
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+							$this->pasaje=($this->pasaje*33)/100;
+							$this->saldo=$this->saldo-$this->pasaje;
 					}
 				
 					else #Trasbordo entre las 2 pm y las 6 am
 					{
 						if( ($this->viaje->darhora()-$hora)<= 1.30)
 						{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+							$this->pasaje=($this->pasaje*33)/100;
+							$this->saldo=$this->saldo-$this->pasaje;
 						}
 					}	
 				}
@@ -80,15 +81,15 @@ class Tarjetas implements Tarjeta{
 				{
 					if(($hora())>=6 && ($hora())<=22 && ($this->viaje->darhora()-$hora)<= 1.30)
 					{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+							$this->pasaje=($this->pasaje*33)/100;
+							$this->saldo=$this->saldo-$this->pasaje;
 					}
 				}
 			}
 		
 			else
 			{
-					$this->saldo=($this->saldo)-($this->monto);
+					$this->saldo=($this->saldo)-($this->pasaje);
 					
 			}
 		}
