@@ -15,7 +15,7 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		$this->pasaje=0;
+		$this->pasaje=8;
 		
 	}
 	
@@ -33,12 +33,8 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->pasaje=$this->pasaje*0.5;
 			}
-				elseif($this->tipo=='normal')
-				{
-					$this->pasaje=8;
-				}
 			
-			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha )
+			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha && $this->tipo!='pase libre' )
 			{	if($dia!="Sabado" && $dia !="Domingo" && $dia!="Feriado")
 				{ #trasbordo dia desemana
 					if($hora>=6 && $hora<=22  && ($this->viaje->darhora()-$hora)<= 1)
