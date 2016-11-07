@@ -52,7 +52,7 @@ class Tarjetas implements Tarjeta{
 			
 				if($this->viaje->dardia()=="Sabado") #Trasbordo dia sabado
 				{
-					if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
+					if(($hora-$this->viaje->darhora())<= 1)
 					{
 						
 							$this->monto=($this->monto*33)/100;
