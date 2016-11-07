@@ -15,7 +15,7 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		
+		$this->pasaje=0;
 		
 	}
 	
@@ -29,14 +29,14 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->pasaje=0;
 			}
-			if($this->tipo=='medio boleto')
+			elseif($this->tipo=='medio boleto')
 			{
 				$this->pasaje=$this->pasaje*0.5;
 			}
-			elseif($this->tipo=='normal')
-			{
-				$this->pasaje=8;
-			}
+				elseif($this->tipo=='normal')
+				{
+					$this->pasaje=8;
+				}
 			
 			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha )
 			{	if($dia!="Sabado" && $dia !="Domingo" && $dia!="Feriado")
