@@ -8,14 +8,13 @@ class Tarjetas implements Tarjeta{
 	protected $nombre;
 	protected $viaje;
 	protected $monto;
-	protected $pasaje;
 	
 	
 	public function __construct($tipotarjeta, $IDtarjeta){
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		$this->pasaje=8;
+		$this->monto=8;
 		
 	}
 	
@@ -27,11 +26,11 @@ class Tarjetas implements Tarjeta{
 			
 			if($this->tipo=='pase libre')
 			{
-				$this->pasaje=0;
+				$this->monto=0;
 			}
 			elseif($this->tipo=='medio boleto')
 			{
-				$this->pasaje=$this->pasaje*0.5;
+				$this->monto=$this->monto*0.5;
 			}
 			
 			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha && $this->tipo!='pase libre' )
@@ -39,14 +38,14 @@ class Tarjetas implements Tarjeta{
 				{ #trasbordo dia desemana
 					if($hora>=6 && $hora<=22  && ($this->viaje->darhora()-$hora)<= 1)
 					{
-						$this->pasaje=($this->pasaje*33)/100;
-						$this->saldo=$this->saldo-$this->pasaje;
+						$this->monto=($this->monto*33)/100;
+						$this->saldo=$this->saldo-$this->monto;
 					}
 					
 				 	elseif(($this->viaje->darhora()-$hora)<= 1.30)
 					{
-							$this->pasaje=($this->pasaje*33)/100;
-							$this->saldo=$this->saldo-$this->pasaje;
+							$this->monto=($this->monto*33)/100;
+							$this->saldo=$this->saldo-$this->monto;
 					}
 				 	
 				}
@@ -56,14 +55,14 @@ class Tarjetas implements Tarjeta{
 					if($hora>=6 && $hora<=14 &&($this->viaje->darhora()-$hora)<= 1)
 					{
 						
-							$this->pasaje=1.32;
-							$this->saldo=$this->saldo-$this->pasaje;
+							$this->monto=1.32;
+							$this->saldo=$this->saldo-$this->monto;
 					}
 				
 					elseif( ($this->viaje->darhora()-$hora)<= 1.30)
 						{
-							$this->pasaje=($this->pasaje*33)/100;
-							$this->saldo=$this->saldo-$this->pasaje;
+							$this->monto=($this->monto*33)/100;
+							$this->saldo=$this->saldo-$this->monto;
 						}	
 				}
 			
@@ -71,15 +70,15 @@ class Tarjetas implements Tarjeta{
 				{
 					if(($hora())>=6 && ($hora())<=22 && ($this->viaje->darhora()-$hora)<= 1.30)
 					{
-							$this->pasaje=($this->pasaje*33)/100;
-							$this->saldo=$this->saldo-$this->pasaje;
+							$this->monto=($this->monto*33)/100;
+							$this->saldo=$this->saldo-$this->monto;
 					}
 				}
 			}
 		
 			else
 			{
-					$this->saldo=($this->saldo)-($this->pasaje);
+					$this->saldo=($this->saldo)-($this->monto);
 					
 			}
 		}
