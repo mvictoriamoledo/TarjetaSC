@@ -36,13 +36,13 @@ class Tarjetas implements Tarjeta{
 			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha && $this->tipo!='pase libre' )
 			{	if($dia!="Sabado" && $dia !="Domingo" && $dia!="Feriado")
 				{ #trasbordo dia desemana
-					if($hora>=6 && $hora<=22  && ($this->viaje->darhora()-$hora)<= 1)
+					if($hora>=6 && $hora<=22  && ($hora-$this->viaje->darhora())<= 1)
 					{
 						$this->monto=($this->monto*33)/100;
 						$this->saldo=$this->saldo-$this->monto;
 					}
 					
-				 	elseif(($this->viaje->darhora()-$hora)<= 1.30)
+				 	elseif(($hora-$this->viaje->darhora())<= 1.30)
 					{
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
@@ -52,14 +52,14 @@ class Tarjetas implements Tarjeta{
 			
 				if($this->viaje->dardia()=="Sabado") #Trasbordo dia sabado
 				{
-					if($hora>=6 && $hora<=14 &&($this->viaje->darhora()-$hora)<= 1)
+					if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
 					{
 						
-							$this->monto=1.32;
+							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
 					}
 				
-					elseif( ($this->viaje->darhora()-$hora)<= 1.30)
+					elseif( ($hora-$this->viaje->darhora())<= 1.30)
 						{
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
@@ -68,7 +68,7 @@ class Tarjetas implements Tarjeta{
 			
 				if($this->viaje->dardia()=="Domingo" || $this->viaje->dardia()=="Feriado")
 				{
-					if(($hora())>=6 && ($hora())<=22 && ($this->viaje->darhora()-$hora)<= 1.30)
+					if(($hora())>=6 && ($hora())<=22 && ($hora-$this->viaje->darhora())<= 1.30)
 					{
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
