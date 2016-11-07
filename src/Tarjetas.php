@@ -32,7 +32,7 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			else
+			elseif($this->tipo=='normal')
 			{
 				$this->monto=8;
 			}
