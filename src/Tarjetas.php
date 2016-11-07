@@ -24,7 +24,7 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
-			$this->pasaje=0;
+			
 			if($this->tipo=='pase libre')
 			{
 				$this->pasaje=0;
