@@ -32,7 +32,7 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			if( $this->viaje->darfecha()==$fecha && $this->tipo!='pase libre' )
+			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha && $this->tipo!='pase libre' )
 			{
 				if($this->dardia() !="Sabado" && $this->dardia() !="Domingo" && $this->dardia()!="Feriado")
 				{ #trasbordo dia desemana
