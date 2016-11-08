@@ -40,7 +40,7 @@ class Tarjetas implements Tarjeta{
 					if($hora>=6 && $hora<=22  && ($hora-$this->viaje->darhora())<= 1)
 					{
 						
-						$this->saldo=$this->saldo-(($this->monto*33)/100);
+						$this->saldo=$this->saldo-$this->monto;
 						$this->monto=($this->monto*33)/100;
 					}
 					
