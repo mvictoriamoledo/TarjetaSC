@@ -55,7 +55,7 @@ class Tarjetas implements Tarjeta{
 				
 				else 
 				{	if($dia()=="Sabado" && $this->tipo!="medio boleto") #Trasbordo dia sabado
-					{	$this->monto=3;
+					{	
 						if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
 						{
 						
