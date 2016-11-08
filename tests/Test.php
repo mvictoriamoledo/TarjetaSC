@@ -39,7 +39,7 @@ class TarjetaTest extends TestCase {
 	$this->assertEquals($tarje->saldo(),20-0,"Se recargo 20 ycomo es pase libre se paga 0");
   }
 
-  public function testTransbordo() {
+  public function testTransbordoSemana() {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("medio boleto", "1234");
 	$tarje->recargar(272);
@@ -51,7 +51,25 @@ class TarjetaTest extends TestCase {
   }
 	
 
+ public function testTransbordoSabadoNoche() {
+	$bondi= new Colectivos("144");
+	$tarje= new Tarjetas("normal", "1234");
+	$tarje->recargar(272);
+	$tarje->pagar($bondi,"Sabado","30/09/2016","22.00");
+	$bondi2= new Colectivos("128");
+	$tarje->pagar($bondi2,"Sabado","30/09/2016","23.25");
+	$this->assertEquals($tarje->saldo(), (320-8-((8*33)/100)), "Ok");
+  }
+ public function testTransbordoFeriado() {
+	$bondi= new Colectivos("144");
+	$tarje= new Tarjetas("normal", "1234");
+	$tarje->recargar(272);
+	$tarje->pagar($bondi,"Feriado","30/09/2016","10.55");
 
+	$bondi2= new Colectivos("128");
+	$tarje->pagar($bondi2,"Viernes","30/09/2016","11.30");
+	$this->assertEquals($tarje->saldo(), (320-8-((8*33)/100)), "ok");
+  }
   public function testNoTransbordo() {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("normal", "1234");
