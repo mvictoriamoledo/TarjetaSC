@@ -71,14 +71,15 @@ class Tarjetas implements Tarjeta{
 							}	
 						}
 					}
-				}
-				else 
-				{	if ($dia()=="Domingo" || $dia()=="Feriado" &&$this->tipo!="medio boleto")
-					{
-						if(($hora())>=6 && ($hora())<=22 && ($hora-$this->viaje->darhora())<= 1.30)
+				
+					else 
+					{		if ($dia()=="Domingo" || $dia()=="Feriado" &&$this->tipo!="medio boleto")
 						{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+							if(($hora())>=6 && ($hora())<=22 && ($hora-$this->viaje->darhora())<= 1.30)
+							{
+								$this->monto=($this->monto*33)/100;
+								$this->saldo=$this->saldo-$this->monto;
+							}
 						}
 					}
 				}
