@@ -52,25 +52,26 @@ class Tarjetas implements Tarjeta{
 				 	}
 				}
 				
-				else if($dia()=="Sabado" && $this->tipo!="medio boleto") #Trasbordo dia sabado
-				{	$this->monto=3;
-					if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
-					{
+				else 
+				{	if($dia()=="Sabado" && $this->tipo!="medio boleto") #Trasbordo dia sabado
+					{	$this->monto=3;
+						if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
+						{
 						
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
-					}
-				
-					else 
-					{	
+						}
+					
+						else 
+						{	
 						if( ($hora-$this->viaje->darhora())<= 1.30)
 						{
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
 						}	
+						}
 					}
 				}
-			
 				else 
 					if ($dia()=="Domingo" || $dia()=="Feriado" &&$this->tipo!="medio boleto")
 					{
