@@ -8,7 +8,8 @@ class Tarjetas implements Tarjeta{
 	protected $nombre;
 	protected $viaje;
 	protected $monto;
-	
+	protected $guardosaldo;
+	protected $plus;
 	
 	public function __construct($tipotarjeta, $IDtarjeta){
 		$this->tipo=$tipotarjeta;#tipopersona
