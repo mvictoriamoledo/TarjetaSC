@@ -3,6 +3,7 @@
 namespace Poli\Tarjeta;
 
 class Viajes{
+	public $viajes;
 	protected $nombreultimotransporteusado;
 	protected $horaultimoviajehecho;
 	protected $fechaultimoviaje;
@@ -12,6 +13,14 @@ class Viajes{
 	public function __construct(){
 		$this->boleto= new Boleto;
 	}
+	
+	
+	/*public function nuevoViaje( $boleto){
+		$this->viajes[i] = $boleto
+		$i++;
+	}*/
+	
+	
 	public function darnombre(){
 		return $this->nombreultimotransporteusado;
 	}
