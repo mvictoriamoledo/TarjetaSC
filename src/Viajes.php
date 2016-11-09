@@ -4,11 +4,14 @@ namespace Poli\Tarjeta;
 
 class Viajes{
 	public $viajes;
-	protected $nombreultimotransporteusado;
-	protected $horaultimoviajehecho;
-	protected $fechaultimoviaje;
-	protected $diadefecha;
+	protected $fecha;
+	protected $hora;
+	protected $tipo;
+	protected $saldo;
+	protected $nrotransporte;
+	protected $idtarjeta;
 	protected $monto;
+	protected $dia;
 	protected $boleto;
 	public function __construct(){
 		$this->boleto= new Boleto;
