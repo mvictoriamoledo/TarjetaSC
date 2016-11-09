@@ -32,7 +32,7 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			if($this->salgo >0)
+			if($this->salgo > $this->monto)
 		     {	
 			if($this->viaje->darnombre()!=$transporte->darnombre())
 			{
