@@ -56,7 +56,7 @@ class Tarjetas implements Tarjeta{
 					}
 							
 				}
-				else if($fecha=="Domingo" || $fecha=="Feriado" && $this->tipo!="medio boleto")
+				elseif($fecha=="Domingo" || $fecha=="Feriado" && $this->tipo!="medio boleto")
 				{	
 					if(($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
 					{
@@ -78,7 +78,7 @@ class Tarjetas implements Tarjeta{
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;	
 						}
-						else if(($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
+						elseif(($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
 						{
 							$this->monto=($this->monto*33)/100;
 							$this->saldo=$this->saldo-$this->monto;
