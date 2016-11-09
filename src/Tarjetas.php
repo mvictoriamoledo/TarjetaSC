@@ -35,8 +35,8 @@ class Tarjetas implements Tarjeta{
 			}
 			if($this->saldo > $this->monto)
 		     {	
-			
-				#casos posibles del trasbordo
+			if($this->viaje->darnombre()!=$transporte->darnombre())
+			{	#casos posibles del trasbordo
 				
 				if($fecha!="Sabado" && $fecha!="Domingo" && $fecha != "Feriado")
 				{
@@ -90,7 +90,13 @@ class Tarjetas implements Tarjeta{
 					}			
 				}
 			}
-			
+				else
+				{
+					$this->saldo=$this->saldo-$this->monto;
+				}
+					
+		
+			}
 		     else
 		     {	  if($this->saldo>0)
 		     	   { $this->guardosaldo=$this->saldo;
