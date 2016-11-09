@@ -32,7 +32,8 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			
+			if($this->salgo >0)
+		     {	
 			if($this->viaje->darnombre()!=$transporte->darnombre())
 			{
 				#casos posibles del trasbordo
@@ -99,6 +100,15 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->saldo=$this->saldo-$this->monto;
 			}
+		     }
+		     else
+		     {
+			     if($this->saldo>(-16) && $this->saldo<0)
+			     {
+				     $this->monto=-8;
+				     $this->saldo=$this->saldo-$this->monto;
+			     }
+		     }
 		}		
 		if($transporte instanceof Bicicletas)	
 		{
