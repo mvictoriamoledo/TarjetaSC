@@ -15,7 +15,7 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		$this->viaje= new Viajes();
+		$this->viaje= new Boleto();
 		
 	}
 	
