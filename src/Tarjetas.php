@@ -140,7 +140,10 @@ class Tarjetas implements Tarjeta{
 	
 	public function saldo(){
 		//echo "El saldo de la tarjeta ".$this->nombre." es: ".$this->saldo."\n";
-		$this->saldo=$this->saldo+$this->guardosaldo;
+		if($this->saldo >0)
+		{
+			$this->saldo=$this->saldo+$this->guardosaldo;
+		}
 		return $this->saldo;
 	}
 	
