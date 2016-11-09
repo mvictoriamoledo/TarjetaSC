@@ -99,7 +99,7 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->saldo=$this->saldo-$this->monto;
 			}
-				
+		}		
 		if($transporte instanceof Bicicletas)	
 		{
 			$this->tipotransporte="Bicicleta";
@@ -107,7 +107,7 @@ class Tarjetas implements Tarjeta{
 			$this->monto=12;
 			$this->saldo=$this->saldo-$this->monto;	
 		}
-		}
+		
 	}
 	
 	
