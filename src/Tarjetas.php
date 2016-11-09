@@ -18,7 +18,7 @@ class Tarjetas implements Tarjeta{
 		
 	}
 	
-	public function pagar($transporte, $dia, $fecha, $hora)
+	public function pagar($transporte, $hora, $fecha, $dia)
 	{       $this->viaje= new Viajes();
 		if($transporte instanceof Colectivos)
 		{
@@ -32,66 +32,49 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			if($this->viaje->darnombre() != $transporte->darnombre() && $this->viaje->darfecha()==$fecha && $this->tipo!='pase libre' )
+			if($this->viaje->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre')
 			{
-				if($this->dardia() !="Sabado" && $this->dardia() !="Domingo" && $this->dardia()!="Feriado")
-				{ #trasbordo dia desemana
-					
-					if($hora>=6 && $hora<=22  && ($hora-$this->viaje->darhora())<= 1)
+				#casos posibles del trasbordo
+				
+				if($fecha!="sabado" && $fecha!="domingo" && $fecha != "feriado")
+				{
+							
+					if($hora<22 && $hora> 6 && ($hora-$this->viaje->darhora())<=1 && ($dia==$this->viaje->dardia()||($dia-$this->viaje->dardia())==1))
 					{
 						$this->monto=($this->monto*33)/100;
-						$this->saldo=($this->saldo)-($this->monto);
-						
+						$this->saldo=$this->saldo-$this->monto;
+								
 					}
-					
-				 	else 
-					{	if(($hora-$this->viaje->darhora())<= 1.30)
-						{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
-						}
-				 	}
+							
+					else if(($hora>22||$hora<6) && ($hora-$this->viaje->darhora())<=1.3 && ($dia==$this->viaje->dardia()||($dia-$this->viaje->dardia())==1))
+					{
+								
+						$this->monto=($this->monto*33)/100;
+						$this->saldo=$this->saldo-$this->monto;
+								
+					} 
+							
 				}
-				
-				else 
-				{	if($dia()=="Sabado" && $this->tipo!="medio boleto") #Trasbordo dia sabado
+				else
+				{	if($$fecha=="domingo" || $fecha == "feriado" && $this->tipo!="medio boleto")
 					{	
-						if($hora>=6 && $hora<=14 &&($hora-$this->viaje->darhora())<= 1)
+						if($hora<22 && $hora>14 && ($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
 						{
-						
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+								
 						}
 					
-						else 
-						{	
-							if( ($hora-$this->viaje->darhora())<= 1.30)
-							{
-								$this->monto=($this->monto*33)/100;
-								$this->saldo=$this->saldo-$this->monto;
-							}	
-						}
-					}
-				
-					else 
-					{	if ($dia()=="Domingo" || $dia()=="Feriado" &&$this->tipo!="medio boleto")
-						{
-							if(($hora())>=6 && ($hora())<=22 && ($hora-$this->viaje->darhora())<= 1.30)
-							{
-								$this->monto=($this->monto*33)/100;
-								$this->saldo=$this->saldo-$this->monto;
-							}
-						}
 					}
 				}
-			}
-		
+				else
+				{
+					
+				}
+			}	
 			else
 			{
-					$this->saldo=($this->saldo)-($this->monto);
-					
+				$this->saldo=$this->saldo-$this->monto;
 			}
-		}
+				
 		if($transporte instanceof Bicicletas)	
 		{
 			$this->tipotransporte="Bicicleta";
