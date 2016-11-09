@@ -4,6 +4,7 @@ namespace Poli\Tarjeta;
 
 
 class Colectivos{
+	protected $costo;
 	protected $nombre;
 	public function __construct($nom){
 		$this->nombre=$nom;
@@ -13,4 +14,3 @@ class Colectivos{
 	return $this->nombre;
 	}
 }
-
