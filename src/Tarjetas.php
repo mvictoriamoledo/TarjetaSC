@@ -32,7 +32,7 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			if($this->salgo > $this->monto)
+			if($this->saldo > $this->monto)
 		     {	
 			if($this->viaje->darnombre()!=$transporte->darnombre())
 			{
@@ -102,8 +102,11 @@ class Tarjetas implements Tarjeta{
 			}
 		     }
 		     else
-		     {
-			     if($this->saldo>(-16) && $this->saldo<0)
+		     {	  if($this->saldo>0)
+		     	   { $this->guardosaldo=$this->saldo;
+			     $this->saldo=0;
+			   }
+			     if($this->saldo>(-16) && $this->saldo<=0)
 			     {
 				     $this->monto=-8;
 				     $this->saldo=$this->saldo-$this->monto;
@@ -124,18 +127,19 @@ class Tarjetas implements Tarjeta{
 	
 	public function recargar($monto){
         if($monto!=500&&$monto!=272){
-			$this->saldo=$this->saldo+$monto;
+			$this->saldo=$this->saldo+$monto+$this->guardosaldo;
 		}
         if($monto==500){
-			$this->saldo=$this->saldo+640;
+			$this->saldo=$this->saldo+640+$this->guardosaldo;
 		}
 		if($monto==272){
-			$this->saldo=$this->saldo+320;
+			$this->saldo=$this->saldo+320+$this->guardosaldo;
 		}
 	}
 	
 	public function saldo(){
 		//echo "El saldo de la tarjeta ".$this->nombre." es: ".$this->saldo."\n";
+		$this->saldo=$this->saldo+$this->guardosaldo;
 		return $this->saldo;
 	}
 	
