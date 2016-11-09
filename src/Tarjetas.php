@@ -1,147 +1,124 @@
 <?php
 
 namespace Poli\Tarjeta;
+namespace Poli\Tarjeta;
 class Tarjetas implements Tarjeta{ 
 	protected $tipo;
 	protected $saldo;
 	protected $tipotransporte;
 	protected $nombre;
-	protected $viaje;
+	public $boleto;
 	protected $monto;
-	protected $guardosaldo;
-	protected $plus;
 	
-	public function __construct($tipotarjeta, $IDtarjeta){
-		$this->tipo=$tipotarjeta;#tipopersona
+	public function __construct($tipopersona, $name){
+		$this->tipo=$tipopersona;
 		$this->saldo=0;
-		$this->nombre=$IDtarjeta;#name
-		$this->viaje= new Boletos();
-		
+		$this->nombre=$name;
+		$this->boleto=new Boletos();
 	}
 	
-	public function pagar($transporte, $hora, $fecha, $dia)
-	{       
-	 	
-		if($transporte instanceof Colectivos)
-		{
+	public function pagar($transporte, $hora, $fecha, $dia){
+		if($transporte instanceof Colectivos){
 			$this->tipotransporte="Colectivo";
-			$this->monto=8;
-			if($this->tipo=='pase libre')
-			{
+			if($this->tipo=='pase libre'){
 				$this->monto=0;
 			}
-			else if($this->tipo=='medio boleto')
-			{
-				$this->monto=$this->monto*0.5;
+			if($this->saldo==0||$this->saldo==-8){
+						$this->saldo=$this->saldo-8;
+						$this->monto=-8;
 			}
-			if($this->saldo > $this->monto)
-		     {	
-			if($this->viaje->darnombre() !=$transporte->darnombre())
-			{	#casos posibles del trasbordo
-				
-				if($fecha!="Sabado" && $fecha!="Domingo" && $fecha != "Feriado")
-				{
+			if($this->saldo>0){
+				if($this->boleto->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre'){
+				#casos posibles del trasbordo
+					if($this->tipo=='estudiante' && $this->boleto->darmonto() != 1.32){
+						#ya sea terciario, secundario o primario, se puede usar sólo entre semana
+						if($fecha!="sabado" && $fecha!="domingo"){
 							
-					if($hora<22 && $hora> 6 && ($hora-$this->viaje->darhora())<=1 && ($dia==$this->viaje->dardia()||($dia-$this->viaje->dardia())==1))
-					{
-						$this->monto=($this->monto*33)/100;
-						$this->saldo=$this->saldo-$this->monto;
-								
-					}
+							if($hora<22 && $hora> 6 && ($hora-$this->boleto->darhora())<=1 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+								#trasbordo
+								$this->saldo=$this->saldo-1.32;
+								$this->monto=1.32;
+							}
 							
-					
-					else 
-					{
-						$this->saldo=$this->saldo-$this->monto;
-					}
-							
-				}
-				elseif($fecha=="Domingo" || $fecha=="Feriado" && $this->tipo!="medio boleto")
-				{	
-					if(($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
-					{
-						$this->monto=($this->monto*33)/100;
-						$this->saldo=$this->saldo-$this->monto;			
-					}
-					else
-					{
-					$this->saldo=$this->saldo-$this->monto;
+							else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1)){
+								#trasbordo
+								$this->saldo=$this->saldo-1.32;
+								$this->monto=1.32;
+							} 
+							else {
+								#normal
+								$this->saldo=$this->saldo-4;
+								$this->monto=4;
+							}
+						}
 					}
 					
-				}
-
-				else
-				{	if($fecha=="Sabado" && $this->tipo!="medio boleto")
-					{
-						if($hora<14 && $hora>6 && ($hora-$this->viaje->darhora())<=1 && $dia==$this->viaje->dardia())
-						{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;	
+					else{
+						#Posible Trasbordo normal
+						if($hora<22 && $hora>6 && ($hora-$this->boleto->darhora())<=1 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1) && $this->boleto->darmonto() != 2.64){
+							#trasbordo
+							$this->saldo=$this->saldo-2.64;
+							$this->monto=2.64;
 						}
-						elseif(($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
-						{
-							$this->monto=($this->monto*33)/100;
-							$this->saldo=$this->saldo-$this->monto;
+						
+						else if(($hora>22||$hora<6) && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia()||($dia-$this->boleto->dardia())==1) && $this->boleto->darmonto() != 2.64){
+							#trasbordo
+							$this->saldo=$this->saldo-2.64;
+							$this->monto=2.64;
 						}
-						else
-						{
-							$this->saldo=$this->saldo-$this->monto;
+						
+						else if($hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.3 && ($fecha=="sabado"||$fecha=="feriado") && $dia==$this->boleto->dardia() && $this->boleto->darmonto() != 2.64){
+							#trasbordo
+							$this->saldo=$this->saldo-2.64;
+							$this->monto=2.64;
 						}
-							
-					}			
-				}
+						else{
+							#normal
+							$this->saldo=$this->saldo-8;
+							$this->monto=8;
+						}
+					}
+				}		
+				else{
+					if($this->tipo!='pase libre'){
+						if($this->tipo=='estudiante '&& $fecha!="sabado" && $fecha!="domingo"){ 
+							$this->saldo=$this->saldo-4;
+							$this->monto=4;
+						}
+						else{
+							$this->saldo=$this->saldo-8;
+							$this->monto=8;
+						}
+					}	
+				}	
 			}
-				else
-				{
-					$this->saldo=$this->saldo-$this->monto;
-				}
-					
-		
-			}
-		     else
-		     {	  if($this->saldo>0)
-		     	   { $this->guardosaldo=$this->saldo;
-			     $this->saldo=0;
-			   }
-			     if($this->saldo>(-16) && $this->saldo<=0)
-			     {
-				     $this->monto=-8;
-				     $this->saldo=$this->saldo-$this->monto;
-			     }
-		     }
-		}		
-		if($transporte instanceof Bicicletas)	
-		{
-			$this->tipotransporte="Bicicleta";
-			$this->viaje= new Viajes();
-			$this->monto=12;
-			$this->saldo=$this->saldo-$this->monto;	
 		}
+		
+		else{
+			$this->saldo=$this->saldo-12;
+			$this->tipotransporte="Bicicleta";
+			$this->monto=12;
+			}
+		
+		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre,$dia);
 		
 	}
-	
-	
-	
+		
 	public function recargar($monto){
-        if($monto!=500&&$monto!=272){
-			$this->saldo=$this->saldo+$monto+$this->guardosaldo;
+	        if($monto!=500 && $monto!=272){
+			$this->saldo=$this->saldo+$monto;
 		}
-        if($monto==500){
-			$this->saldo=$this->saldo+640+$this->guardosaldo;
+        
+		if($monto==500){
+			$this->saldo=$this->saldo+640;
 		}
+	
 		if($monto==272){
-			$this->saldo=$this->saldo+320+$this->guardosaldo;
+			$this->saldo=$this->saldo+320;
 		}
 	}
 	
 	public function saldo(){
-		//echo "El saldo de la tarjeta ".$this->nombre." es: ".$this->saldo."\n";
-		if($this->saldo >0)
-		{
-			$this->saldo=$this->saldo+$this->guardosaldo;
-		}
 		return $this->saldo;
 	}
-	
-	
 }
