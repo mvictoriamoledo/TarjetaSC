@@ -54,7 +54,7 @@ class TarjetaTest extends TestCase {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("normal", "1234");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"22.00","Sabado","30/09/2016");
+	$tarje->pagar($bondi,"22","Sabado","30/09/2016");
 	$bondi2= new Colectivos("128");
 	$tarje->pagar($bondi2,"23.25","Sabado","30/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-8-((8*33)/100)), "Ok");
@@ -76,7 +76,7 @@ class TarjetaTest extends TestCase {
 	$tarje->pagar($bondi,"20.55","lunes","30/09/2016");
 	
 	$bondi2= new Colectivos("128");
-	$tarje->pagar($bondi2,"23.00","lunes","30/09/2016");
+	$tarje->pagar($bondi2,"23","lunes","30/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-8-8),"Ok");
   }
   public function testViajePlus() {
