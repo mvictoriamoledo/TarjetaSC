@@ -23,14 +23,18 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
-			$this->monto=8;
+			
 			if($this->tipo=='pase libre')
 			{
 				$this->monto=0;
 			}
-			if($this->tipo=='medio boleto')
+			else if($this->tipo=='medio boleto')
 			{
 				$this->monto=$this->monto*0.5;
+			}
+			else
+			{
+				$this->monto=8;	
 			}
 			if($this->viaje->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre')
 			{
@@ -61,7 +65,7 @@ class Tarjetas implements Tarjeta{
 				}
 				else if($fecha=="Domingo" || $fecha=="Feriado" && $this->tipo!="medio boleto")
 				{	
-					if($hora<22 && $hora>6 && ($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
+					if(($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
 					{
 						$this->monto=($this->monto*33)/100;
 						$this->saldo=$this->saldo-$this->monto;			
