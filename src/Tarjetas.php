@@ -15,12 +15,13 @@ class Tarjetas implements Tarjeta{
 		$this->tipo=$tipotarjeta;#tipopersona
 		$this->saldo=0;
 		$this->nombre=$IDtarjeta;#name
-		
+		$this->viaje= new Viajes();
 		
 	}
 	
 	public function pagar($transporte, $hora, $fecha, $dia)
-	{       $this->viaje= new Viajes();
+	{       
+	 	
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
@@ -35,7 +36,7 @@ class Tarjetas implements Tarjeta{
 			}
 			if($this->saldo > $this->monto)
 		     {	
-			if($this->viaje->darnombre()!=$transporte->darnombre())
+			if($this->viaje->darnombre() !=$transporte->darnombre())
 			{	#casos posibles del trasbordo
 				
 				if($fecha!="Sabado" && $fecha!="Domingo" && $fecha != "Feriado")
