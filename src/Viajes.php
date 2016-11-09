@@ -49,6 +49,6 @@ class Viajes{
 		return $this->dia;
 	}
 		
-	}
+	
 }
 
