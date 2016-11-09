@@ -81,12 +81,13 @@ class TarjetaTest extends TestCase {
   }
   public function testViajePlus() {
 	$bondi= new Colectivos("144");
+	$bondi2= new Colectivos("128");
 	$tarje= new Tarjetas("medio boleto", "1234");
 	$tarje->recargar(10);
 	$tarje->pagar($bondi,"20.55","lunes","30/09/2016");
 	$tarje->pagar($bondi2,"23.00","viernes","10/10/2016");
 	$this->assertEquals($tarje->saldo(), (-8),"Uso primer plus");
-	$tarje->pagar($bondi2,"23.00","sabado","11/10/2016");
+	$tarje->pagar($bondi,"23.00","sabado","11/10/2016");
 	$this->assertEquals($tarje->saldo(), (-16),"Uso segundo plus");
 	$tarje->recargar(20);
 	$this->assertEquals($tarje->saldo(), 6,"Se cobran 16 del plus ");
