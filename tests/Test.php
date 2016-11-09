@@ -82,8 +82,8 @@ class TarjetaTest extends TestCase {
   public function testViajePlus() {
 	$bondi= new Colectivos("144");
 	$bondi2= new Colectivos("128");
-	$tarje= new Tarjetas("medio boleto", "1234");
-	$tarje->recargar(10);
+	$tarje= new Tarjetas("normal", "1234");
+	$tarje->recargar(8);
 	$tarje->pagar($bondi,"20.55","lunes","30/09/2016");
 	$tarje->pagar($bondi2,"23.00","viernes","10/10/2016");
 	$this->assertEquals($tarje->saldo(), (-8),"Uso primer plus");
