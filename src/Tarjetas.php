@@ -59,7 +59,7 @@ class Tarjetas implements Tarjeta{
 					}
 							
 				}
-				else if($$fecha=="Domingo" || $fecha=="Feriado" && $this->tipo!="medio boleto")
+				else if($fecha=="Domingo" || $fecha=="Feriado" && $this->tipo!="medio boleto")
 				{	
 					if($hora<22 && $hora>6 && ($hora-$this->viaje->darhora())<=1.3 && $dia==$this->viaje->dardia())
 					{
