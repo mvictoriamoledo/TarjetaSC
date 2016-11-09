@@ -67,7 +67,7 @@ class TarjetaTest extends TestCase {
 	$tarje->pagar($bondi,"10.55","feriado","30/09/2016");
 
 	$bondi2= new Colectivos("128");
-	$tarje->pagar($bondi2,"11.30","viernes","30/09/2016");
+	$tarje->pagar($bondi2,"11.30","feriado","30/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-8-((8*33)/100)), "ok");
   }
   public function testNoTransbordo() {
