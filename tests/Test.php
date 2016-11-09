@@ -43,11 +43,10 @@ class TarjetaTest extends TestCase {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("medio boleto", "1234");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"10.55","viernes","30/09/2016");
-	$this->assertEquals($tarje->saldo(), (320-4),"Primer viaje pago 4 quedan 316");
-	$bondi2= new Colectivos("128");
-	$tarje->pagar($bondi2,"11.30","viernes","30/09/2016");
-	$this->assertEquals($tarje->saldo(), (320-4-((4*33)/100)), "cargo 272, pero se cargan 320. El primer viaje me sale 4 y el segundo 1,32");
+	$tarje->pagar($bondi1,"18.52","miercoles","15/09/2016");
+	$bondi= new Colectivos("145");
+	$tarje->pagar($bondi,"19.12","miercoles","15/09/2016");
+	$this->assertEquals($tarje->saldo(), 314.68, "Cuando cargo 272 deberia tener finalmente 320 y paga 4 el primer viaje y 1.32 de trasbordo");
   }
 	
 
