@@ -23,7 +23,7 @@ class Tarjetas implements Tarjeta{
 		if($transporte instanceof Colectivos)
 		{
 			$this->tipotransporte="Colectivo";
-			
+			$this->monto=8;
 			if($this->tipo=='pase libre')
 			{
 				$this->monto=0;
@@ -32,11 +32,8 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			else
-			{
-				$this->monto=8;	
-			}
-			if($this->viaje->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre')
+			
+			if($this->viaje->darnombre()!=$transporte->darnombre())
 			{
 				#casos posibles del trasbordo
 				
