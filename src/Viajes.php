@@ -22,26 +22,29 @@ class Viajes{
 	
 	
 	public function darnombre(){
-		return $this->nombreultimotransporteusado;
+		return $this->idtarjeta;
 	}
 	public function darhora(){
-		return $this->horaultimoviajehecho;
+		return $this->hora;
 	}
 	public function darfecha(){
-		return $this->fechaultimoviaje;
-	}
-	public function dardia(){
-		return $this->diadefecha;
+		return $this->fecha;
 	}
 	public function darmonto(){
 		return $this->monto;
 	}
-	public function pedirdatosultimoviaje($nombre,$monto,$dia,$fecha,$hora){
-		$this->nombreultimotransporteusado=$nombre;
-		$this->monto=$monto;
-		$this->diadefecha=$dia;
-		$this->fechaultimoviaje=$fecha;
-		$this->horaultimoviajehecho=$hora;
+	public function darsaldo(){
+		return $this->saldo;
+	}
+	public function dartransporte(){
+		return $this->nrotransporte;
+	}
+	public function dartipoviaje(){
+		return $this->tipo;
+	}
+	public function dardia(){
+		return $this->dia;
+	}
 		
 	}
 }
