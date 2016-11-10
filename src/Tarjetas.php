@@ -10,10 +10,10 @@ class Tarjetas implements Tarjeta{
 	public $boleto;
 	protected $monto;
 	
-	public function __construct($tipopersona, $name){
-		$this->tipo=$tipopersona;
+	public function __construct($tipopersona, $Idtarjeta){
+		$this->tipo=$tipotarjeta;
 		$this->saldo=0;
-		$this->nombre=$name;
+		$this->nombre=$Idtarjeta;
 		$this->boleto=new Boletos();
 	}
 	
