@@ -98,9 +98,9 @@ class TarjetaTest extends TestCase {
 	$tarje->pagar($bondi,"18.52","martes","25/09/2016");  
 	$this->assertEquals($tarje->boleto->dartransporte(),"144", "Utiliza el colectivo 144");
 	$this->assertEquals($tarje->boleto->darhora(),"18.52", "Lo uso a las 18.52");
-	$this->assertEquals($tarje->boleto->darmonto(),"4", "Pago un monto de 4 pesos");
+	$this->assertEquals($tarje->boleto->darmonto(),4, "Pago un monto de 4 pesos");
 	$this->assertEquals($tarje->boleto->darfecha(),"martes", "Utiliza el colectivo el dia martes");
-	$this->assertEquals($tarje->boleto->darsaldo(),250, "la tarjeta tiene un saldo de 250");
+	$this->assertEquals($tarje->boleto->darsaldo(),246, "la tarjeta tiene un saldo de 246");
 	$this->assertEquals($tarje->boleto->dartipoviaje(),"Medio", "el viaje es del tipo medio boleto");
    }
 }
