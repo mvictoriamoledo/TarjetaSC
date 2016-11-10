@@ -61,7 +61,7 @@ class Tarjetas implements Tarjeta{
 						$this->saldo=$this->saldo-$this->monto;
 					
 					}
-					else if($fecha=="sabado" && $hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia()){
+					else if($fecha=="sabado" && $hora<22 && $hora>14 && ($hora-$this->boleto->darhora())<=1.3 && ($dia==$this->boleto->dardia())){
 						$this->monto=($this->monto*33)/100;
 						$this->saldo=$this->saldo-$this->monto;
 					}
