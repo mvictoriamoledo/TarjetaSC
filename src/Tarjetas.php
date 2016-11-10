@@ -79,7 +79,7 @@ class Tarjetas implements Tarjeta{
 					{
 							#normal
 						$this->saldo=$this->saldo-$this->monto;
-						$this->monto=8;
+						
 					}
 				}
 				else
