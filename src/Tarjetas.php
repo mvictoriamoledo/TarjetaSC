@@ -32,7 +32,7 @@ class Tarjetas implements Tarjeta{
 				$this->monto=$this->monto*0.5;
 			}
 			if($this->saldo<$this->monto && $this->saldo >-16)
-			{		$this->monto=-8;
+			{		
 			 		if($this->saldo>0)
 					{
 						$this->saldoguardado=$this->saldo;
