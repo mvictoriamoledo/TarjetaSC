@@ -9,6 +9,7 @@ class Tarjetas implements Tarjeta{
 	protected $nombre;
 	public $boleto;
 	protected $monto;
+	protected $saldoguardado;
 	
 	public function __construct($tipotarjeta, $Idtarjeta){
 		$this->tipo=$tipotarjeta;
@@ -30,12 +31,18 @@ class Tarjetas implements Tarjeta{
 			{
 				$this->monto=$this->monto*0.5;
 			}
-			if($this->saldo==0||$this->saldo==-8)
-			{
-						$this->saldo=$this->saldo-8;
-						$this->monto=-8;
+			if($this->saldo<$this->monto && $this->saldo >-16)
+			{		$this->monto=-8;
+			 		if($this->saldo>0)
+					{
+						$this->saldoguardado=$this->saldo;
+						$this->saldo=0;
+					}
+					$this->saldo=$this->saldo-$this->monto;
+						
 			}
-			if($this->saldo>0)
+		
+			if($this->saldo>$this->monto)
 			{
 				if($this->boleto->darnombre()!=$transporte->darnombre() && $this->tipo!='pase libre')
 				{
@@ -91,10 +98,10 @@ class Tarjetas implements Tarjeta{
 		}	
 		
 		else
-		{
-			$this->saldo=$this->saldo-12;
-			$this->tipotransporte="Bicicleta";
+		{	$this->tipotransporte="Bicicleta";
 			$this->monto=12;
+			$this->saldo=$this->saldo-$this->monto;
+			
 		}
 		
 		$this->boleto->pedirdatosultimoviaje($transporte->darnombre(),$this->monto,$fecha,$hora,$this->saldo,$this->nombre,$dia);
@@ -102,6 +109,10 @@ class Tarjetas implements Tarjeta{
 	}
 		
 	public function recargar($monto){
+		if($this->saldo<0)
+		{
+			$this->saldo=$this->saldo+$this->saldoguardado;	
+		}
 	        if($monto!=500 && $monto!=272){
 			$this->saldo=$this->saldo+$monto;
 		}
@@ -113,6 +124,7 @@ class Tarjetas implements Tarjeta{
 		if($monto==272){
 			$this->saldo=$this->saldo+320;
 		}
+		
 	}
 	
 	public function saldo(){
