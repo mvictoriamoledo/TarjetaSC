@@ -54,19 +54,19 @@ class TarjetaTest extends TestCase {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("normal", "1234");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"22","Sabado","30/09/2016");
+	$tarje->pagar($bondi,"22","sabado","30/09/2016");
 	$bondi2= new Colectivos("128");
-	$tarje->pagar($bondi2,"23.25","Sabado","30/09/2016");
+	$tarje->pagar($bondi2,"23.25","sabado","30/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-8-((8*33)/100)), "Ok");
   }
  public function testTransbordoFeriado() {
 	$bondi= new Colectivos("144");
 	$tarje= new Tarjetas("normal", "1234");
 	$tarje->recargar(272);
-	$tarje->pagar($bondi,"10.55","Feriado","30/09/2016");
+	$tarje->pagar($bondi,"10.55","feriado","30/09/2016");
 
 	$bondi2= new Colectivos("128");
-	$tarje->pagar($bondi2,"11.30","Feriado","30/09/2016");
+	$tarje->pagar($bondi2,"11.30","feriado","30/09/2016");
 	$this->assertEquals($tarje->saldo(), (320-8-((8*33)/100)), "ok");
   }
   public function testNoTransbordo() {
@@ -81,15 +81,26 @@ class TarjetaTest extends TestCase {
   }
   public function testViajePlus() {
 	$bondi= new Colectivos("144");
-	$bondi2= new Colectivos("128");
 	$tarje= new Tarjetas("normal", "1234");
 	$tarje->recargar(8);
 	$tarje->pagar($bondi,"20.55","lunes","30/09/2016");
-	$tarje->pagar($bondi2,"23.00","viernes","10/10/2016");
-	$this->assertEquals($tarje->saldo(), (-8),"Uso primer plus");
+	$tarje->pagar($bondi,"23.00","viernes","10/10/2016");
+	$this->assertEquals($tarje->saldo(), -8,"Uso primer plus");
 	$tarje->pagar($bondi,"23.00","sabado","11/10/2016");
 	$this->assertEquals($tarje->saldo(), (-16),"Uso segundo plus");
 	$tarje->recargar(20);
-	$this->assertEquals($tarje->saldo(), 6,"Se cobran 16 del plus ");
+	$this->assertEquals($tarje->saldo(), 4,"Se cobran 16 del plus ");
   }
+	public function testDarBoleto() {	
+   	$tarje= new Tarjetas("medio boleto", "2913");
+	$tarje->recargar(250);
+	$bondi= new Colectivos("144");
+	$tarje->pagar($bondi,"18.52","martes","25/09/2016");  
+	$this->assertEquals($tarje->boleto->dartransporte(),"144", "Utiliza el colectivo 144");
+	$this->assertEquals($tarje->boleto->darhora(),"18.52", "Lo uso a las 18.52");
+	$this->assertEquals($tarje->boleto->darmonto(),"4", "Pago un monto de 4 pesos");
+	$this->assertEquals($tarje->boleto->darfecha(),"martes", "Utiliza el colectivo el dia martes");
+	$this->assertEquals($tarje->boleto->darsaldo(),250, "la tarjeta tiene un saldo de 250");
+	$this->assertEquals($tarje->boleto->dartipoviaje(),"Medio", "el viaje es del tipo medio boleto");
+   }
 }
